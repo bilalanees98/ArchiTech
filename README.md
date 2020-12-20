@@ -16,7 +16,7 @@ The ArchiTechClient can easily be run by cloning the repo into android studio.
 The server side contains all the files and folders necessary for running the server apart from the libraries and the model itself. For the libraries a requirements.txt is uploaded for installing the specific versions of the libraries (use "pip install -r requirements.txt" - be sure to update pip first). For the model, create a folder named "pretrained" in the server directory and add the model in the zip file from the following link to the folder:
 https://mycuhk-my.sharepoint.com/:f:/g/personal/1155052510_link_cuhk_edu_hk/EgyJhisy04hNnxKncWl5zksBf9zDKDpMJ7c0V-q53_pxuA?e=P0BjZd
 
-Server works with python 3.5 only
+Server works with python 3.5 only, also make sure firefox is installed and also make sure you have geckodriver installed (and make sure to add it to PATH)
  # Recommended steps for server
  1. Download the repo
  2. Create a folder named pretrained in the main server folder, name it "pretrained"
