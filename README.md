@@ -12,9 +12,20 @@ The server side is flask server that runs on localhost. It also contains the pyt
 
 # How to run
 The ArchiTechClient can easily be run by cloning the repo into android studio.
-The server side contains all the files and folders necessary for running the server apart from the libraries and the model itself. For the libraries a requirements.txt is uploaded for installing the specific versions of the libraries (use "pip install -r requirements.txt"). For the model, create a folder named "pretrained" in the server directory and add the model from the below link to the folder:
-#add zlzeng link to model#
- Once done, run the server with the command
- "python app.py"
+
+The server side contains all the files and folders necessary for running the server apart from the libraries and the model itself. For the libraries a requirements.txt is uploaded for installing the specific versions of the libraries (use "pip install -r requirements.txt" - be sure to update pip first). For the model, create a folder named "pretrained" in the server directory and add the model in the zip file from the following link to the folder:
+https://mycuhk-my.sharepoint.com/:f:/g/personal/1155052510_link_cuhk_edu_hk/EgyJhisy04hNnxKncWl5zksBf9zDKDpMJ7c0V-q53_pxuA?e=P0BjZd
+
+Server works with python 3.5 only
+ # Recommended steps for server
+ 1. Download the repo
+ 2. Create a folder named pretrained in the main server folder, name it "pretrained"
+ 3. Download model from above given link and place in pretrained folder
+ 4. Open folder in your favourite IDE
+ 5. Create a virtual environment using: python -m venv env
+ 6. Activate virtual environment
+ 7. upgrade pip in virtual environment using: python -m pip install --upgrade pip
+ 8. Install all libraries using: pip install -r requirements.txt
+ 9. Run server using: python app.py
  
  
