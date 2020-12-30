@@ -26,7 +26,6 @@ import com.google.firebase.auth.FirebaseUser;
      FirebaseAuth firebaseAuth;
      TextView signUpText;
      ProgressBar progressBar;
-//     private FirebaseAuth.AuthStateListener authStateListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,8 +40,10 @@ import com.google.firebase.auth.FirebaseUser;
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                trimming whitespaces before and after
                 final String email1=email.getText().toString().trim();
                 final String password1=password.getText().toString().trim();
+//                checks for UI
                 if(email1.isEmpty()){
                     email.setError("Provide email id");
                     email.requestFocus();
@@ -52,7 +53,7 @@ import com.google.firebase.auth.FirebaseUser;
                     password.setError("Provide password");
                     password.requestFocus();
                 }
-
+//              if password and email entered
                 else if(!email1.isEmpty() && !password1.isEmpty()){
                     progressBar.setVisibility(View.VISIBLE);
                     firebaseAuth.signInWithEmailAndPassword(email1,password1).addOnCompleteListener(Login.this, new OnCompleteListener<AuthResult>() {
@@ -61,10 +62,11 @@ import com.google.firebase.auth.FirebaseUser;
                             if(!task.isSuccessful()){
                                 FirebaseAuthException e = (FirebaseAuthException )task.getException();
                                 e.printStackTrace();
-                                System.out.println(email1 + "---------" + password1);
+//                                System.out.println(email1 + "---------" + password1);
                                 Toast.makeText(Login.this,"Login error",Toast.LENGTH_SHORT).show();
                             }
                             else{
+//                                changing screen to imageUpload screen
                                 Intent toHome=new Intent(Login.this,ImageUpload.class);
                                 startActivity(toHome);
                             }
@@ -82,6 +84,7 @@ import com.google.firebase.auth.FirebaseUser;
         signUpText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                changing screen
                 Intent signinbut=new Intent(Login.this,Register.class);
                 startActivity(signinbut);
             }

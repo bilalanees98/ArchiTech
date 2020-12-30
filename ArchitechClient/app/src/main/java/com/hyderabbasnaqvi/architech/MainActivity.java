@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
+//    this class is just a default class - not needed currently, may be helpful later on
     TextView nextPage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

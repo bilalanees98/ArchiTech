@@ -1,0 +1,12 @@
+Android - connection with server side :
+https://heartbeat.fritz.ai/uploading-images-from-android-to-a-python-based-flask-server-691e4092a95e
+https://medium.com/analytics-vidhya/how-to-make-client-android-application-with-flask-for-server-side-8b1d5c55446e
+
+Prediction model/postprocessor:
+https://github.com/zlzeng/DeepFloorplan
+https://www.mathworks.com/help/images/morphological-dilation-and-erosion.html
+https://opencv-python-tutroals.readthedocs.io/en/latest/py_tutorials/py_imgproc/py_morphological_ops/py_morphological_ops.html
+
+Information collector:
+https://stackoverflow.com/questions/45043617/count-the-number-of-objects-of-different-colors-in-an-image-in-python/45080346
+

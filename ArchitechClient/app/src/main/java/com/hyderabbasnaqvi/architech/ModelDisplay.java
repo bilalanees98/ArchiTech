@@ -26,9 +26,10 @@ public class ModelDisplay extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_model_display);
-        logOut=findViewById(R.id.logout);
 
+        logOut=findViewById(R.id.logout);
         predictionImg = findViewById(R.id.predictionImg);
+//        getting data stored in intent
         String imgString = getIntent().getStringExtra("PRED_IMAGE");
         final ArrayList<String> roomCounts = getIntent().getStringArrayListExtra("ROOM_COUNT");
         final ArrayList<String> roomTypes = getIntent().getStringArrayListExtra("ROOM_TYPES");
@@ -40,10 +41,12 @@ public class ModelDisplay extends AppCompatActivity {
         Log.i("INFO_INTENT",pca);
         Log.i("INFO_INTENT",costEstimate);
 
+//        image that is received from server is encoded, it is decoded here
         byte[] decodedString = Base64.decode(imgString, Base64.DEFAULT);
         Bitmap decodedBytes = BitmapFactory.decodeByteArray(decodedString, 0, decodedString.length);
         predictionImg.setImageBitmap(decodedBytes);
         info=findViewById(R.id.infoButton);
+//        for opening bottom drawer
         info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

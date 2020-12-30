@@ -24,7 +24,7 @@ public class Register extends AppCompatActivity {
     TextView loginText;
     Button register;
     FirebaseAuth firebaseAuth;
-    ProgressBar p;
+    ProgressBar progressBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +36,16 @@ public class Register extends AppCompatActivity {
         password=findViewById(R.id.passwordRegister);
         register=findViewById(R.id.registerButton);
         loginText=findViewById(R.id.loginTextOnSignup);
-        p=findViewById(R.id.progressBar1);
+        progressBar=findViewById(R.id.progressBar1);
+
         register.setOnClickListener(new View.OnClickListener() {
             @SuppressLint("WrongConstant")
             @Override
             public void onClick(View view) {
-
+//              trimming whitespaces before and after
                 String email1=email.getText().toString().trim();
                 String password1=password.getText().toString().trim();
+//                UI checks
                 if(email1.isEmpty()){
                     email.setError("Provide email id");
                     email.requestFocus();
@@ -53,7 +55,7 @@ public class Register extends AppCompatActivity {
                     password.setError("Provide email id");
                     password.requestFocus();
                 }
-
+//              if email and password provided
                 else if(!email1.isEmpty() && !password1.isEmpty()){
                     firebaseAuth.createUserWithEmailAndPassword(email1,password1).addOnCompleteListener(Register.this, new OnCompleteListener<AuthResult>() {
                         @Override
@@ -64,6 +66,7 @@ public class Register extends AppCompatActivity {
                                 Toast.makeText(Register.this,"Error occured in registration",Toast.LENGTH_SHORT).show();
                             }
                             else{
+//                                if successful move to imageUpload screen
                                 startActivity(new Intent(Register.this,ImageUpload.class));
                             }
                         }
@@ -78,6 +81,7 @@ public class Register extends AppCompatActivity {
         loginText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                open up login screen
                 Intent signinbut=new Intent(Register.this,Login.class);
                 startActivity(signinbut);
             }

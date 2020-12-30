@@ -20,12 +20,11 @@ public class InfoBottomSheetDialogue extends BottomSheetDialogFragment {
     String pca, costEstimate;
     ArrayList<String> roomCounts,roomTypes;
     Hashtable<String,String> roomDictionary;
-//            # color map - from python code
+//            # color map - from python code - here just for reference
 //    self.floorplan_map = {
 //        (255, 255, 255): 'background - white',  # background
 //                (192, 192, 224): 'closet - violet',  # closet
 //                (192, 255, 255): 'bathroom/washroom - cyan',  # bathroom/washroom
-//            # livingroom/kitchen/dining room
 //                (224, 255, 192): 'livingroom/kitchen/dining room - light green',
 //                (255, 224, 128): 'bedroom - yellow',  # bedroom
 //                (255, 160, 96): 'hall - orange',  # hall
@@ -33,12 +32,15 @@ public class InfoBottomSheetDialogue extends BottomSheetDialogFragment {
 //                (255, 60, 128): 'door & window - pink',  # door & window
 //                (0,  0,  0): 'wall - black'  # wall
 //    }
+
+//    data that is to be shown in bottom dialogue is received and instantiated in constructor
     InfoBottomSheetDialogue(String pArea, ArrayList<String> rc, ArrayList<String> rt,String costEstimate)
     {
         this.pca = pArea;
         this.roomCounts= rc;
         this.roomTypes=rt;
         this.costEstimate = costEstimate;
+//        dictionary to mimic the one in python server
         roomDictionary = new Hashtable<String,String>();
         for(int i = 0; i<roomCounts.size();i++){
             roomDictionary.put(roomTypes.get(i),roomCounts.get(i));
@@ -61,8 +63,6 @@ public class InfoBottomSheetDialogue extends BottomSheetDialogFragment {
         bedroomsField.setText(roomDictionary.get("bedroom - yellow"));
         bathroomsField.setText(roomDictionary.get("bathroom/washroom - cyan"));
         costEstimateField.setText(" PKR " + costEstimate);
-
-        //setting data on bottom sheet
 
         return view;
     }

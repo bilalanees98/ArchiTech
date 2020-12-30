@@ -56,10 +56,9 @@ public class ImageUpload extends AppCompatActivity {
     Button uploadButton;
     Button uploadToServerBtn;
     Button logout_imageUpload;
-    FirebaseAuth mFirebaseAuth;
-    private FirebaseAuth.AuthStateListener mAuthStateListener;
     private ProgressBar spinner;
 
+//    server listening on port number 5000
     final String PORT_NUMBER = "5000";
     Uri uri;
 
@@ -67,6 +66,7 @@ public class ImageUpload extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_image_upload);
+
         logout_imageUpload=findViewById(R.id.logout_imageUpload);
         inputImg = findViewById(R.id.inputImg);
         ipAddress = findViewById(R.id.ipAddress);
@@ -74,7 +74,6 @@ public class ImageUpload extends AppCompatActivity {
         uploadToServerBtn = findViewById(R.id.uploadToServerBtn);
         floorPlanLength = findViewById(R.id.floorPlanLength);
         floorPlanWidth = findViewById(R.id.floorPlanWidth);
-
         spinner = (ProgressBar)findViewById(R.id.progressBar1);
         spinner.setVisibility(View.GONE);
 
@@ -82,21 +81,26 @@ public class ImageUpload extends AppCompatActivity {
         uploadToServerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+//                getting user entered texts
                 String length = floorPlanLength.getText().toString();
                 String width = floorPlanWidth.getText().toString();
-
                 String ip = ipAddress.getText().toString();
+
+//                UI checks
                 if(uri == null){
                     Toast.makeText(ImageUpload.this, "Please select image", Toast.LENGTH_SHORT).show();
                 }
+//                checks to ensure length is not empty and is positive and non zero
                 else if(length.isEmpty() || length.equals(null) || length.startsWith("-") || length.equals("0")){
                     floorPlanLength.setError("Incorrect length value");
                     floorPlanLength.requestFocus();
                 }
+//                checks to ensure width is not empty and is positive and non zero
                 else if(width.isEmpty() || width.equals(null) || width.startsWith("-") || width.equals("0")){
                     floorPlanWidth.setError("Incorrect width value");
                     floorPlanWidth.requestFocus();
                 }
+//                validates IP
                 else if(ip.isEmpty() || ip.equals(null) || !validate(ip)){
                     ipAddress.setError("Incorrect IP value");
                     ipAddress.requestFocus();
@@ -115,34 +119,31 @@ public class ImageUpload extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 FirebaseAuth.getInstance().signOut();
+//                go back to login screen when logged out
                 Intent back=new Intent(ImageUpload.this,Login.class);
                 startActivity(back);
-
             }
         });
-
-
     }
 
     void connectServer(View v) throws IOException {
         ipAddress = findViewById(R.id.ipAddress);
         String ipv4Address = ipAddress.getText().toString();
-
         String portNumber = PORT_NUMBER;
 
         String postUrl= "http://"+ipv4Address+":"+portNumber+"/predict";
-        System.out.println(postUrl);
+//        System.out.println(postUrl);
 
         ByteArrayOutputStream stream = new ByteArrayOutputStream();
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.RGB_565;
-
+//      convert image to byte array, store its string value in file
         byte[] byteArray = convertImageToByte(uri);
         File f = new File(uri.toString());
+//        filename that is sent to server, to make it unique
         String imageName = f.getName();
 
-
-
+//        request holds image(file), lenght and width
         RequestBody postBodyImage = new MultipartBody.Builder()
                 .setType(MultipartBody.FORM)
                 .addFormDataPart("image", imageName, RequestBody.create(MediaType.parse("image/*jpg"), byteArray))
@@ -150,14 +151,14 @@ public class ImageUpload extends AppCompatActivity {
                 .addFormDataPart("width",floorPlanWidth.getText().toString())
                 .build();
 
-
         postRequest(postUrl, postBodyImage);
     }
 
     public byte[] convertImageToByte(Uri uri){
+//        just to convert image to bytes
         byte[] data = null;
         try {
-            System.out.println("in try -------------------------------------------");
+//            System.out.println("in try -------------------------------------------");
             ContentResolver cr = getBaseContext().getContentResolver();
             InputStream inputStream = cr.openInputStream(uri);
             Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
@@ -165,7 +166,7 @@ public class ImageUpload extends AppCompatActivity {
             bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
             data = baos.toByteArray();
         } catch (FileNotFoundException e) {
-            System.out.println("in catch ----------------------------------------");
+//            System.out.println("in catch ----------------------------------------");
             e.printStackTrace();
         }
         return data;
@@ -174,8 +175,7 @@ public class ImageUpload extends AppCompatActivity {
     void postRequest(String postUrl, RequestBody postBody) {
         spinner.setVisibility(View.VISIBLE);
 
-//        OkHttpClient client = new OkHttpClient();
-
+//        create client with long timeouts. bandwith issues may cause longer wait times
         OkHttpClient client = new OkHttpClient.Builder()
                 .connectTimeout(60, TimeUnit.SECONDS)
                 .writeTimeout(60, TimeUnit.SECONDS)
@@ -192,7 +192,7 @@ public class ImageUpload extends AppCompatActivity {
             public void onFailure(Call call, IOException e) {
                 // Cancel the post on failure.
                 call.cancel();
-                System.out.println("on failure------------------------------");
+//                System.out.println("on failure------------------------------");
                 e.printStackTrace();
                 // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
                 runOnUiThread(new Runnable() {
@@ -205,10 +205,10 @@ public class ImageUpload extends AppCompatActivity {
                 });
             }
 
+//            when response received
             @Override
             public void onResponse(Call call, final Response response) throws IOException {
-                System.out.println("on response------------------------------");
-                System.out.println(response.body().toString());
+//                System.out.println(response.body().toString());
                 try {
                     JSONObject jsonObject = new JSONObject(response.body().string());
                     Log.i("RECEIVED_FROM_SERVER",jsonObject.getJSONArray("roomCounts").toString());
@@ -216,6 +216,7 @@ public class ImageUpload extends AppCompatActivity {
                     Log.i("RECEIVED_FROM_SERVER",jsonObject.get("percentageCoveredArea").toString());
                     Log.i("RECEIVED_FROM_SERVER",jsonObject.get("costEstimate").toString());
 
+//                    json array received in specific format, seperating individual components
                     String costEstimate = jsonObject.get("costEstimate").toString();
                     JSONArray jsArray = jsonObject.getJSONArray("roomCounts");
                     ArrayList<String> roomCounts = new ArrayList<>();
@@ -225,7 +226,7 @@ public class ImageUpload extends AppCompatActivity {
                         roomCounts.add(temp.getString(1));
                         roomTypes.add(temp.getString(0));
                     }
-
+//                  adding received data from response to intent
                     Intent i = new Intent(ImageUpload.this, ModelDisplay.class);
                     i.putExtra("PRED_IMAGE", jsonObject.get("ImageBytes").toString());
                     i.putStringArrayListExtra("ROOM_COUNT", roomCounts);
@@ -238,7 +239,6 @@ public class ImageUpload extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-
                 // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
                 runOnUiThread(new Runnable() {
                     @Override
@@ -252,18 +252,9 @@ public class ImageUpload extends AppCompatActivity {
         });
     }
 
-//    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-//    @Override
-//    protected void onActivityResult(int reqCode, int resCode, Intent data) {
-//        super.onActivityResult(reqCode, resCode, data);
-//        if (resCode == RESULT_OK && data != null) {
-//            uri = data.getData();
-//            inputImg.setImageURI(uri);
-//            Toast.makeText(getApplicationContext(), "image selected", Toast.LENGTH_LONG).show();
-//        }
-//    }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
+//        handles cropped image intents
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
@@ -277,19 +268,13 @@ public class ImageUpload extends AppCompatActivity {
         }
     }
 
-
+//  starts crop activity
     public void selectImage(View v) {
-//        Intent intent = new Intent();
-//        intent.setType("*/*");
-//        intent.setAction(Intent.ACTION_GET_CONTENT);
-//        startActivityForResult(intent, 0);
         CropImage.activity()
                 .setGuidelines(CropImageView.Guidelines.ON)
                 .start(ImageUpload.this);
     }
     public static boolean validate(final String ip) {
-//        String PATTERN = "^((0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)\\.){3}(0|1\\d?\\d?|2[0-4]?\\d?|25[0-5]?|[3-9]\\d?)$";
-//        return ip.matches(PATTERN);
         return InetAddresses.isInetAddress(ip);
     }
 }
