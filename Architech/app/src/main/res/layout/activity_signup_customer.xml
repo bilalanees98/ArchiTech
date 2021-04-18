@@ -111,6 +111,31 @@
 
             </EditText>
 
+
+            </com.google.android.material.textfield.TextInputLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:passwordToggleEnabled="true"
+                app:hintEnabled="false"
+                app:passwordToggleTint="@color/black"
+
+                android:layout_marginVertical="10dp"
+                >
+
+                <EditText
+                    android:id="@+id/confirm_password_input_customer_signup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Confirm Password"
+                    android:layout_marginVertical="7dp"
+                    android:textSize="16sp"
+                    android:inputType="textPassword"
+                    >
+
+                </EditText>
+
+
             </com.google.android.material.textfield.TextInputLayout>
 
             <Button
@@ -134,7 +159,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/signupFormCustomer"
             android:layout_centerHorizontal="true"
-            android:layout_margin="30dp"
+            android:layout_margin="10dp"
             >
 
             <TextView

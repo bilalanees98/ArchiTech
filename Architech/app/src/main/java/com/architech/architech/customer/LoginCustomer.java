@@ -48,7 +48,8 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class LoginCustomer extends AppCompatActivity {
-//    private static final String ONESIGNAL_APP_ID = "bbcc3a17-6447-447d-8718-0a485dd91063";
+
+    TextView forgotPassword;
     TextView signUpText, skipBtn;
     Button loginButton;
     Button unityBtn;
@@ -64,7 +65,29 @@ public class LoginCustomer extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_customer);
 
-        // OneSignal Initialization
+        forgotPassword=findViewById(R.id.forgotPasswordText);
+
+        forgotPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(email.getText().toString().isEmpty()){
+                    email.setError("Enter email to reset password");
+                    email.requestFocus();
+                }
+                else{
+                    FirebaseAuth.getInstance().sendPasswordResetEmail(email.getText().toString())
+                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Log.d("FORGOTDEBUG", "Email sent.");
+                                    }
+                                }
+                            });
+                }
+            }
+        });
+
 
         unityBtn = findViewById(R.id.unityActivityBtn);
         unityBtn.setOnClickListener(new View.OnClickListener() {
@@ -227,12 +250,11 @@ public class LoginCustomer extends AppCompatActivity {
 
                 }
                 else{
-//                    OneSignal.setAppId(ONESIGNAL_APP_ID);
-//                    OneSignal.sendTag("User_id",firebaseAuth.getCurrentUser().getEmail());
+
 
                     progressBar.setVisibility(View.GONE);
                     Intent toHome=new Intent(LoginCustomer.this,MainPageCustomer.class);
-//                    Intent toHome=new Intent(LoginCustomer.this,AddFloorPlan.class);
+
 
                     toHome.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
 

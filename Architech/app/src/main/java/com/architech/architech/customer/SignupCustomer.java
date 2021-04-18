@@ -19,9 +19,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.onesignal.OneSignal;
 import com.architech.architech.R;
 import com.architech.architech.model.Customer;
@@ -32,7 +36,7 @@ public class SignupCustomer extends AppCompatActivity {
 //    private static final String ONESIGNAL_APP_ID = "bbcc3a17-6447-447d-8718-0a485dd91063";
     TextView loginText;
     Button signupButton;
-    EditText name_input,email_input,password_input,phone_input;
+    EditText name_input,email_input,password_input,confirm_password_input,phone_input;
     CircleImageView imageIcon;
     ProgressBar progressBar;
 
@@ -54,6 +58,7 @@ public class SignupCustomer extends AppCompatActivity {
         name_input=findViewById(R.id.name_input_customer_signup);
         email_input=findViewById(R.id.email_input_customer_signup);
         password_input=findViewById(R.id.password_input_customer_signup);
+        confirm_password_input=findViewById(R.id.confirm_password_input_customer_signup);
         phone_input=findViewById(R.id.phone_input_customer_signup);
         imageIcon= findViewById(R.id.imageSignupCustomer);
         progressBar= findViewById(R.id.progressBarSignupCustomer);
@@ -80,6 +85,7 @@ public class SignupCustomer extends AppCompatActivity {
                 final String email=email_input.getText().toString().trim();
                 final String password=password_input.getText().toString().trim();
                 final String phone= phone_input.getText().toString().trim();
+                final String confirmPassword=confirm_password_input.getText().toString().trim();
                 //email is empty
                 if(name.isEmpty()){
                     name_input.setError("Provide Email");
@@ -97,6 +103,14 @@ public class SignupCustomer extends AppCompatActivity {
                 else if(password.isEmpty()){
                     password_input.setError("Provide Password");
                     password_input.requestFocus();
+                }
+                else if (confirmPassword.isEmpty()){
+                    confirm_password_input.setError("Provide Password Confirmation");
+                    confirm_password_input.requestFocus();
+                }
+                else if(!password.equals(confirmPassword)){
+                    confirm_password_input.setError("Passwords don't match");
+                    confirm_password_input.requestFocus();
                 }
                 else {
                     signUp();
@@ -127,29 +141,71 @@ public class SignupCustomer extends AppCompatActivity {
                 .addOnCompleteListener(task -> {
                     if(task.isSuccessful()){
                         String uid=mAuth.getCurrentUser().getUid();
-                        Customer newCustomer=new Customer(
-                                name_input.getText().toString(),
-                                phone_input.getText().toString(),
-                                email_input.getText().toString(),
-                                uid
+                        if(imageUri!=null){
 
-                        );
-                        DatabaseReference database = FirebaseDatabase.getInstance().getReference()
-                                .child("Users")
-                                .child(uid);
-                        database.setValue(newCustomer).addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-//                                OneSignal.setAppId(ONESIGNAL_APP_ID);
-//                                OneSignal.sendTag("User_id",email_input.getText().toString());
-                                progressBar.setVisibility(View.VISIBLE);
-                                Intent toHome=new Intent(SignupCustomer.this,MainPageCustomer.class);
-                                toHome.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                            StorageReference st= FirebaseStorage.getInstance().getReference();
+                            st=st.child("images/"+uid+".jpg");
+                            st.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                                    Task<Uri> task= taskSnapshot.getStorage().getDownloadUrl();
+                                    task.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                        @Override
+                                        public void onSuccess(Uri uri) {
+                                            Customer newCustomer=new Customer(
+                                                    name_input.getText().toString(),
+                                                    phone_input.getText().toString(),
+                                                    email_input.getText().toString(),
+                                                    uid
 
-                                startActivity(toHome);
-                                finish();
-                            }
-                        });
+                                            );
+                                            DatabaseReference database = FirebaseDatabase.getInstance().getReference()
+                                                    .child("Users")
+                                                    .child(uid);
+                                            database.setValue(newCustomer).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                @Override
+                                                public void onSuccess(Void aVoid) {
+                                                    progressBar.setVisibility(View.VISIBLE);
+                                                    Intent toHome=new Intent(SignupCustomer.this,MainPageCustomer.class);
+                                                    toHome.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                                                    startActivity(toHome);
+                                                    finish();
+                                                }
+                                            });
+                                        }
+                                    });
+                                }
+                            });
+
+                        }
+                        else{
+                            Customer newCustomer=new Customer(
+                                    name_input.getText().toString(),
+                                    phone_input.getText().toString(),
+                                    email_input.getText().toString(),
+                                    uid
+
+                            );
+                            DatabaseReference database = FirebaseDatabase.getInstance().getReference()
+                                    .child("Users")
+                                    .child(uid);
+                            database.setValue(newCustomer).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    progressBar.setVisibility(View.VISIBLE);
+                                    Intent toHome=new Intent(SignupCustomer.this,MainPageCustomer.class);
+                                    toHome.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+                                    startActivity(toHome);
+                                    finish();
+                                }
+                            });
+
+
+                        }
+
+
 
                     }
                 })
