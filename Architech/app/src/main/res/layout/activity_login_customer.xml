@@ -17,6 +17,43 @@
 
         <LinearLayout
             android:id="@+id/topBarSignupLoginCustomer"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:weightSum="10"
+            android:elevation="20dp"
+            android:layout_marginBottom="10dp"
+            >
+
+
+            <TextView
+                android:id="@+id/titleFloorPlanDetails"
+                android:paddingVertical="16dp"
+                android:layout_width="0dp"
+                android:layout_weight="8.25"
+                android:layout_height="match_parent"
+                android:text="Login"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="#121111"
+                android:gravity="center_vertical"
+                android:textSize="26sp"
+                android:paddingLeft="20dp"
+                android:paddingStart="20dp"
+
+                >
+
+            </TextView>
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:visibility="gone"
+            android:id="@+id/topBarSignupLoginCustomer1"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,6 +114,7 @@
             </EditText>
 
             <TextView
+                android:id="@+id/forgotPasswordText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"

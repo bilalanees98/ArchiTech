@@ -205,21 +205,21 @@ public class FloorPlanDetails extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         progressBar.setVisibility(View.VISIBLE);
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference("Floorplans");
-        database.child(floorPlan.getId()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                progressBar.setVisibility(View.GONE);
-                FloorPlanDetails.super.onBackPressed();
-//                if(task.isSuccessful()){
-//                    progressBar.setVisibility(View.GONE);
-//                    FloorPlanDetails.super.onBackPressed();
-//                }
-//                else{
-//
-//                }
-            }
-        });
+//        DatabaseReference database = FirebaseDatabase.getInstance().getReference("Floorplans");
+//        database.child(floorPlan.getId()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+//            @Override
+//            public void onComplete(@NonNull Task<Void> task) {
+//                progressBar.setVisibility(View.GONE);
+//                FloorPlanDetails.super.onBackPressed();
+////                if(task.isSuccessful()){
+////                    progressBar.setVisibility(View.GONE);
+////                    FloorPlanDetails.super.onBackPressed();
+////                }
+////                else{
+////
+////                }
+//            }
+//        });
 
 //        super.onBackPressed();
     }

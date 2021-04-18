@@ -47,7 +47,7 @@ public class ComparisonListPage extends AppCompatActivity {
     ComparisonListPageRvAdapter adapter;
     RecyclerView rv;
     ProgressBar progressBar;
-
+    LinearLayout backButton;
 
     FloorPlan floorPlanOne;
     FloorPlan floorPlanTwo;
@@ -85,10 +85,21 @@ public class ComparisonListPage extends AppCompatActivity {
         widthFilter=findViewById(R.id.width_filter_value_ComparisonListPage);
         progressBar= findViewById(R.id.progressBarComparisonListPage);
         filterMenu=findViewById(R.id.filter_menu_ComparisonListPage);
+        backButton= findViewById(R.id.backButtonComparisonList);
+
 
         openFilterButton=findViewById(R.id.open_filter_menu_button_ComparisonListPage);
         applyFilterButton=findViewById(R.id.apply_filter_button_ComparisonListPage);
         removeAllButton= findViewById(R.id.remove_all_filter_button_ComparisonListPage);
+
+
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
 
 

@@ -18,6 +18,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -77,7 +78,7 @@ public class AddFloorPlan extends AppCompatActivity {
     ImageButton imageButton;
     TextView selectImageText;
     ProgressBar progressBar;
-
+    LinearLayout backButton;
     ImageView imageView;
 
     private FirebaseAuth mAuth;
@@ -109,6 +110,9 @@ public class AddFloorPlan extends AppCompatActivity {
         addFloorplanButton=findViewById(R.id.addFloorPlanButton);
 
         imageView = findViewById(R.id.imageViewAddFloorPlan);
+        backButton= findViewById(R.id.backButtonAddFloorPlan);
+
+
 
         selectImageText= findViewById(R.id.selectImageText);
         progressBar= findViewById(R.id.progressBarAddFloorPlan);
@@ -121,6 +125,13 @@ public class AddFloorPlan extends AppCompatActivity {
             uid=myProfile.getUid();
         }
 
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         selectImageText.setOnClickListener(new View.OnClickListener() {
             @Override

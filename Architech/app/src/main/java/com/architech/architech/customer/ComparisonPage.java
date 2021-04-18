@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -27,6 +28,7 @@ public class ComparisonPage extends AppCompatActivity {
     TextView costFP1, costFP2;
 
     Button swap;
+    LinearLayout backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +58,8 @@ public class ComparisonPage extends AppCompatActivity {
 
         swap= findViewById(R.id.swapButtonComparison);
 
+        backButton= findViewById(R.id.backButtonComparisonPage);
+
         //SETTING VALUES
         Picasso.get()
                 .load(floorPlanOne.getImageUrl()).fit().centerCrop()
@@ -80,6 +84,13 @@ public class ComparisonPage extends AppCompatActivity {
         costFP2.setText(floorPlanTwo.getCostEstimate());
 
 
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         swap.setOnClickListener(new View.OnClickListener() {
             @Override

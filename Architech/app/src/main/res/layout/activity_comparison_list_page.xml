@@ -6,7 +6,63 @@
     android:layout_height="match_parent"
     tools:context=".customer.ComparisonListPage">
 
+
     <LinearLayout
+        android:id="@+id/titleHeaderComparisonListPage"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:background="@color/white"
+        android:orientation="horizontal"
+        android:weightSum="10"
+        android:elevation="20dp"
+        android:layout_marginBottom="10dp"
+        >
+
+        <LinearLayout
+            android:id="@+id/backButtonComparisonList"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1.5"
+            android:padding="5dp"
+            android:visibility="visible"
+            android:clickable="true">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:src="@drawable/ic_baseline_arrow_back_24"
+                android:backgroundTint="@color/white"
+                android:padding="11dp"
+
+                >
+            </ImageView>
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/titleComparisionListPage"
+            android:paddingVertical="16dp"
+            android:layout_width="0dp"
+            android:layout_weight="8.25"
+            android:layout_height="match_parent"
+            android:text="Compare to"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="#121111"
+            android:gravity="center_vertical"
+            android:textSize="26sp"
+            android:paddingLeft="0dp"
+
+            >
+
+        </TextView>
+
+
+    </LinearLayout>
+
+    <!--<LinearLayout
         android:id="@+id/titleHeaderComparisonListPage"
         android:orientation="vertical"
         android:layout_width="match_parent"
@@ -34,7 +90,7 @@
             android:layout_marginBottom="10dp"/>
 
     </LinearLayout>
-
+-->
     <RelativeLayout android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_below="@id/titleHeaderComparisonListPage">
@@ -198,7 +254,7 @@
                 android:layout_below="@id/scrollViewComparisonListPage"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="0dp"
                 />
 
 
