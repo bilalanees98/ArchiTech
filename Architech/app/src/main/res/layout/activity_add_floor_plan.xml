@@ -10,8 +10,80 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
     >
-    <LinearLayout
-        android:id="@+id/topBarAddFloorPlan"
+
+
+
+
+        <LinearLayout
+            android:id="@+id/topBarAddFloorPlan"
+            android:layout_alignParentTop="true"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:background="@color/white"
+            android:orientation="horizontal"
+            android:weightSum="10"
+            android:elevation="20dp"
+            android:layout_marginBottom="10dp"
+            >
+
+            <LinearLayout
+                android:id="@+id/backButtonAddFloorPlan"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.5"
+                android:padding="5dp"
+                android:visibility="visible">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    android:backgroundTint="@color/white"
+                    android:padding="11dp"
+
+                    >
+                </ImageView>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:id="@+id/titleFloorPlanDetails"
+                android:paddingVertical="16dp"
+                android:layout_width="0dp"
+                android:layout_weight="8.25"
+                android:layout_height="match_parent"
+                android:text="Add floor plan"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="#121111"
+                android:gravity="center_vertical"
+                android:textSize="26sp"
+                android:paddingLeft="0dp"
+
+                >
+
+            </TextView>
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <LinearLayout
+        android:visibility="gone"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
