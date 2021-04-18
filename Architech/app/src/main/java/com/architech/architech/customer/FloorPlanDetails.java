@@ -8,6 +8,7 @@ import android.renderscript.Sampler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -48,6 +49,7 @@ public class FloorPlanDetails extends AppCompatActivity {
     ProgressBar progressBar;
     FirebaseAuth mAuth;
     ImageView imageView;
+    LinearLayout backButton;
 
     String uid="";
     @SuppressLint("DefaultLocale")
@@ -74,7 +76,7 @@ public class FloorPlanDetails extends AppCompatActivity {
         owner= findViewById(R.id.nameOfOwnerFloorPlanDetail);
         progressBar= findViewById(R.id.progressBarAddToFavs);
         imageView = findViewById(R.id.imageViewFloorPlanDetail);
-
+        backButton= findViewById(R.id.backButtonFloorPlanDetails);
 
         String floorPlanId=floorPlan.getId();
         if(mAuth.getCurrentUser()!=null){
@@ -98,6 +100,13 @@ public class FloorPlanDetails extends AppCompatActivity {
         }
 
         System.out.print("hey");
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
         addToFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
