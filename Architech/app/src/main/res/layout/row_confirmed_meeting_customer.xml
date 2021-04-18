@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_width="wrap_content"
+    android:background="@drawable/row_card"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="7dp"
+    android:padding="15dp"
+
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout
+        android:id="@+id/linear_layoutrow_confirmed_meeting_customer"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <TextView
+            android:id="@+id/nameContractorConfirmedMeetingCustomerRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Maashter Builders"
+            android:textColor="#000"
+            android:textSize="20sp"
+            android:fontFamily="@font/roboto_medium"
+            android:layout_marginVertical="5dp"
+            />
+
+        <TextView
+            android:id="@+id/timeConfirmedMeetingCustomerRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Scheduled for 4:00pm - 04/10/20"
+            android:textColor="#000"
+            android:fontFamily="@font/roboto_light"
+            android:layout_marginVertical="2dp"
+            />
+
+        <TextView
+            android:id="@+id/statusConfirmedMeetingCustomerRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Status:"
+            android:textColor="#000"
+            android:fontFamily="@font/roboto_light"
+            android:layout_marginVertical="2dp"
+            />
+
+
+
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/contactTextConfirmedMeetingCustomerRow"
+        android:layout_below="@id/linear_layoutrow_confirmed_meeting_customer"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Contact"
+        android:textColor="#00289F"
+        android:textSize="14sp"
+        android:fontFamily="@font/roboto_medium"
+        android:paddingVertical="10dp"
+        />
+
+
+
+</RelativeLayout>
+

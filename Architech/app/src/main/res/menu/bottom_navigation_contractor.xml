@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/meetingNavIconContractor"
+        android:icon="@drawable/ic_meeting"
+        android:title= "Meeting"
+        />
+
+    <item
+        android:id="@+id/profileNavIconContractor"
+        android:icon="@drawable/ic_account_circle"
+        android:title= "Profile"
+        />
+</menu>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".contractor.MeetingRequestedContractorFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+<!--        <Button-->
+<!--            android:id="@+id/dateTimeButton"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="50dp"-->
+<!--            android:layout_margin="20dp"-->
+<!--            android:text="DATE AND TIME DEMO FOR YOUR ASS"/>-->
+
+        <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewRequestMeetingContractor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+        />
+
+    </LinearLayout>
+        <!--This Linear layout is just a dummy, we gotta put a recycler view here for all meetings-->
+<!--        <LinearLayout-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="10dp"-->
+<!--            android:layout_marginVertical="30dp"-->
+<!--            android:background="@drawable/row_card"-->
+<!--            android:padding="15dp"-->
+<!--            >-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Hyder Abbas"-->
+<!--                android:textColor="#000"-->
+<!--                android:textSize="18sp"-->
+<!--                android:fontFamily="@font/roboto_medium"-->
+<!--                android:layout_marginVertical="5dp"-->
+<!--                />-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Size of House of Interest: 90 x 50"-->
+<!--                android:textColor="#000"-->
+<!--                android:fontFamily="@font/roboto_light"-->
+<!--                android:layout_marginVertical="2dp"-->
+<!--                />-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Requested on: 04/10/20"-->
+<!--                android:textColor="#000"-->
+<!--                android:fontFamily="@font/roboto_light"-->
+<!--                android:layout_marginVertical="2dp"-->
+<!--                />-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Status: Pending"-->
+<!--                android:textColor="#000"-->
+<!--                android:fontFamily="@font/roboto_light"-->
+<!--                android:layout_marginVertical="2dp"-->
+<!--                />-->
+
+
+<!--            <LinearLayout-->
+<!--                android:orientation="horizontal"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_marginTop="10dp"-->
+
+<!--                >-->
+
+<!--                <TextView-->
+<!--                android:layout_weight="1"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Ignore Request"-->
+<!--                android:textColor="#FF001E"-->
+<!--                android:fontFamily="@font/roboto_medium"-->
+<!--                />-->
+<!--                <TextView-->
+<!--                    android:gravity="right"-->
+<!--                    android:layout_weight="1"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Accept and Schedule"-->
+<!--                android:textColor="#1AFF00"-->
+<!--                android:fontFamily="@font/roboto_medium"-->
+<!--                />-->
+<!--            </LinearLayout>-->
+<!--        </LinearLayout>-->
+
+
+
+<!--        <TextView-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Requested Meeting Fragment"-->
+<!--            android:textColor="#CCCCCC"-->
+<!--            android:textSize="24sp"/>-->
+
+
+</FrameLayout>

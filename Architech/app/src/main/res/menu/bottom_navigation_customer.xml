@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/homeNavIcon"
+        android:icon="@drawable/ic_home"
+        android:title= "Home"
+        />
+    <item
+        android:id="@+id/exploreNavIcon"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title= "Explore"
+        />
+
+    <item
+            android:id="@+id/addNavIcon"
+            android:icon="@drawable/ic_add_box"
+            android:title= "Add"
+            />
+
+    <item
+        android:id="@+id/favouriteNavIcon"
+        android:icon="@drawable/ic_star"
+        android:title= "Favourites"
+        />
+
+    <item
+            android:id="@+id/profileNavIcon"
+            android:icon="@drawable/ic_account_circle"
+            android:title= "Profile"
+            />
+
+</menu>

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fff">
+
+
+    <LinearLayout
+        android:id="@+id/topBarMeetingContractor"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="20dp"
+        >
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Meeting"
+            android:textSize="32dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="#000"
+            android:layout_marginBottom="5dp"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#000"/>
+    </LinearLayout>
+
+
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolBarMeetingContractor"
+        android:layout_below="@+id/topBarMeetingContractor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        />
+
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayoutMeetingContractor"
+        android:layout_below="@+id/topBarMeetingContractor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabSelectedTextColor="#000"
+        app:tabIndicatorColor="@color/colorPrimary"
+        app:tabIndicatorHeight="3dp"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="25dp"
+        >
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/confirmedTabContractor"
+            android:background="#efe322"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Confirmed"
+            />
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/requestsTabContractor"
+            android:background="#efe322"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Requests"/>
+
+
+
+
+
+
+
+    </com.google.android.material.tabs.TabLayout>
+
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewPagerMeetingContractor"
+        android:layout_below="@+id/tabLayoutMeetingContractor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+
+
+
+</RelativeLayout>

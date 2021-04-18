@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent" android:layout_height="match_parent"
+
+        android:orientation="vertical"
+        >
+
+
+        <ScrollView
+            android:id="@+id/scrollViewHomeCustomer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+
+            >
+            <LinearLayout
+                android:id="@+id/filter_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:visibility="gone"
+                android:orientation="vertical"
+                android:paddingTop="16dp"
+                android:paddingHorizontal="10dp"
+                >
+                <EditText
+                    android:id="@+id/rooms_filter_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:maxLength="2"
+                    android:hint="No. of Bedrooms"
+                    android:layout_marginRight="60dp"
+
+                    android:inputType="number"
+                    android:background="@drawable/field_rounded_rectangle_grey"
+                    />
+                <EditText
+                    android:id="@+id/bathrooms_filter_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:maxLength="2"
+                    android:inputType="number"
+                    android:hint="No. of Bathrooms"
+
+                    android:background="@drawable/field_rounded_rectangle_grey"
+                   />
+                <EditText
+                    android:id="@+id/car_park_filter_value"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:padding="10dp"
+                    android:maxLength="2"
+                    android:hint="Car Parking Capcity"
+
+                    android:inputType="number"
+
+
+                    android:background="@drawable/field_rounded_rectangle_grey"
+
+                    />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    >
+                    <EditText
+                        android:id="@+id/length_filter_value"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:padding="10dp"
+                        android:hint="Length"
+
+                        android:inputType="number"
+
+                        android:background="@drawable/field_rounded_rectangle_grey"
+                        />
+
+                    <View
+                        android:layout_width="20dp"
+                        android:layout_height="0dp"/>
+
+                    <EditText
+                        android:id="@+id/width_filter_value"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:padding="10dp"
+                        android:layout_weight="1"
+                        android:hint="Width"
+
+                        android:inputType="number"
+
+                        android:background="@drawable/field_rounded_rectangle_grey"
+                        />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                 >
+                <Button
+                    android:id="@+id/remove_all_filter_button"
+                    android:layout_width="100dp"
+                    android:layout_height="50dp"
+                    android:text="Remove All"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textAllCaps="false"
+                    android:background="@drawable/round_rectangle_button_accent"
+
+                    android:visibility="gone"
+                    android:layout_marginVertical="15dp"
+                    android:textColor="@color/white"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginRight="10dp"/>
+
+
+
+                <Button
+                    android:id="@+id/apply_filter_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:text="Apply Filters"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textAllCaps="false"
+                    android:background="@drawable/round_rectangle_button"
+
+                    android:layout_marginVertical="15dp"
+                    android:textColor="@color/white"/>
+
+                </LinearLayout>
+
+
+
+
+
+
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+
+
+        <androidx.recyclerview.widget.RecyclerView
+
+            android:id="@+id/homeCustomerRecyclerView"
+            android:layout_below="@id/scrollViewHomeCustomer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="15dp"
+            />
+
+
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/open_filter_menu_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="20dp"
+            android:src="@drawable/filter_button_round_primary_dark"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginHorizontal="10dp"
+            android:elevation="8dp"
+            />
+
+        <ProgressBar
+
+            android:id="@+id/progressBarHomeCustomerFragment"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+
+            android:layout_centerInParent="true"/>
+
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

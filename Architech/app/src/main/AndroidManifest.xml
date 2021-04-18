@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.architech.architech">
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <application
+        tools:replace="android:icon,android:theme"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+<!--        android:label="@string/title_activity_unity"-->
+        <activity
+            android:name=".UnityActivity"
+
+            android:theme="@style/AppTheme.NoActionBar"
+            android:launchMode="singleTask"
+            android:process=":unityplayer">
+
+        </activity>
+        <activity android:name=".SplashScreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <meta-data
+            android:name="com.onesignal.NotificationOpened.DEFAULT"
+            android:value="DISABLE" />
+
+        <activity
+            android:name="com.theartofdev.edmodo.cropper.CropImageActivity"
+            android:theme="@style/Base.Theme.AppCompat" />
+        <activity android:name=".contractor.EditProfileContractor" />
+        <activity android:name=".customer.ContractorsPageCustomer" />
+        <activity android:name=".customer.ViewFloorPlanFullscreen" />
+        <activity android:name=".customer.FloorPlanDetails" />
+        <activity android:name=".customer.AddFloorPlan" />
+        <activity android:name=".contractor.MainPageContractor" />
+        <activity android:name=".Checking" />
+        <activity android:name=".customer.MainPageCustomer" />
+        <activity android:name=".contractor.LoginContractor" />
+        <activity android:name=".contractor.SignupContractor" />
+        <activity android:name=".customer.SignupCustomer" />
+        <activity android:name=".customer.LoginCustomer" />
+        <activity android:name=".customer.ComparisonListPage" />
+        <activity android:name=".customer.ComparisonPage" />
+        <activity android:name=".MainActivity">
+
+        </activity>
+    </application>
+
+</manifest>

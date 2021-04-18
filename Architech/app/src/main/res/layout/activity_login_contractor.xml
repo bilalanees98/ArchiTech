@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".contractor.SignupContractor">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <LinearLayout
+            android:id="@+id/topBarSignupLoginContractor"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginHorizontal="10dp"
+            android:layout_marginVertical="20dp"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Login as Contractor"
+                android:textSize="32dp"
+                android:fontFamily="@font/roboto_regular"
+                android:textColor="#000"
+                android:layout_marginBottom="5dp"
+                />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="3dp"
+                android:background="#000"/>
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/signupFormContractor"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/topBarSignupLoginContractor"
+            android:layout_marginTop="100dp"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="30dp"
+            android:background="@drawable/form_card"
+            android:layout_marginHorizontal="10dp"
+            >
+            <EditText
+                android:id="@+id/email_input_contractor_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email"
+                android:layout_marginVertical="7dp"
+                android:textSize="16sp"
+
+                >
+            </EditText>
+
+            <EditText
+                android:id="@+id/password_input_contractor_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:layout_marginVertical="7dp"
+                android:textSize="16sp"
+                android:inputType="textPassword"
+                >
+            </EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:text="Forgot Password?"
+                android:textSize="10sp"
+                android:layout_margin="13dp"/>
+
+            <Button
+                android:id="@+id/loginContractorButton"
+                android:layout_width="120dp"
+                android:layout_height="40dp"
+                android:background="@drawable/round_rectangle_button"
+                android:text="Login"
+                android:textSize="12sp"
+                android:fontFamily="@font/roboto_light"
+                android:textColor="#fff"
+                android:textAllCaps="false"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/signupFormContractor"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="30dp"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Don't have an account? "
+                android:fontFamily="@font/roboto_light"
+                android:textColor="#000"
+                />
+
+            <TextView
+                android:id="@+id/signupTextOnLoginContractor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:fontFamily="@font/roboto_light"
+                android:text="Sign Up"
+                android:textAllCaps="false"/>
+
+
+
+        </LinearLayout>
+
+
+
+        <ProgressBar
+            android:id="@+id/progressBarLoginContractor"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:layout_centerInParent="true"/>
+
+
+    </RelativeLayout>
+
+</ScrollView>

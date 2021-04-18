@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".customer.ComparisonPage">
+
+
+    <LinearLayout
+        android:id="@+id/titleHeaderComparisonPage"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="20dp"
+        >
+        <TextView
+            android:id="@+id/titleComparePage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Compare"
+            android:textSize="32dp"
+            android:fontFamily="@font/roboto_regular"
+            android:textColor="#000"
+            android:layout_marginBottom="5dp"
+            />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="#000"
+            android:layout_marginBottom="10dp"/>
+    </LinearLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/comparisonOneFloorPlan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/titleHeaderComparisonPage"
+        >
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/row_card"
+            android:padding="15dp"
+            android:layout_margin="10dp"
+            >
+
+            <ImageView
+                android:scaleType="centerInside"
+                android:id="@+id/comparisonOneImage"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                />
+
+            <View
+                android:layout_width="15dp"
+                android:layout_height="match_parent"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:id="@+id/comparisonOneTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Title Of Floor Plan"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="18sp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="by "
+                        android:fontFamily="@font/roboto_light"
+                        android:textSize="14sp"/>
+                    <TextView
+                        android:id="@+id/comparisonOneOwnerName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_light"
+                        android:text="Someone Probably"
+                        android:textSize="14sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Size:                  "
+                        android:fontFamily="@font/roboto_light"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:id="@+id/comparisonOneSize"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="90 x 50"
+                        android:fontFamily="@font/roboto_light"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Bedrooms:       "
+                        android:fontFamily="@font/roboto_light"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/comparisonOneBedrooms"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="5"
+                        android:fontFamily="@font/roboto_light"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Bathrooms:      "
+                        android:fontFamily="@font/roboto_light"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/comparisonOneBathrooms"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="6"
+                        android:fontFamily="@font/roboto_light"
+                        android:textSize="12sp"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cost Estimate: "
+                        android:fontFamily="@font/roboto_light"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/comparisonOneCostEstimates"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        android:fontFamily="@font/roboto_light"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/comparisonTwoFloorPlan"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/comparisonOneFloorPlan"
+        >
+
+        <LinearLayout
+            android:id="@+id/floorPlanRow"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/row_card"
+            android:padding="15dp"
+            android:layout_margin="10dp"
+            >
+
+            <ImageView
+                android:scaleType="centerInside"
+                android:id="@+id/comparisonTwoImage"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+
+                />
+
+            <View
+                android:layout_width="15dp"
+                android:layout_height="match_parent"/>
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+                <TextView
+                    android:id="@+id/comparisonTwoTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Title Of Floor Plan"
+                    android:fontFamily="@font/roboto_medium"
+                    android:textSize="18sp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="by "
+                        android:fontFamily="@font/roboto_light"
+                        android:textSize="14sp"/>
+                    <TextView
+                        android:id="@+id/comparisonTwoOwnerName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/roboto_light"
+                        android:text="Someone Probably"
+                        android:textSize="14sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Size:                  "
+                        android:fontFamily="@font/roboto_light"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:layout_marginTop="8dp"
+                        android:id="@+id/comparisonTwoSize"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="90 x 50"
+                        android:fontFamily="@font/roboto_light"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Bedrooms:       "
+                        android:fontFamily="@font/roboto_light"
+                        android:textSize="12sp"/>
+                    <TextView
+                        android:id="@+id/comparisonTwoBedrooms"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="5"
+                        android:fontFamily="@font/roboto_light"
+                        android:textSize="12sp"/>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Bathrooms:      "
+                        android:fontFamily="@font/roboto_light"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/comparisonTwoBathrooms"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="6"
+                        android:fontFamily="@font/roboto_light"
+                        android:textSize="12sp"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Cost Estimate: "
+                        android:fontFamily="@font/roboto_light"
+                        android:textSize="12sp"/>
+
+                    <TextView
+                        android:id="@+id/comparisonTwoCostEstimates"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2"
+                        android:fontFamily="@font/roboto_light"
+                        android:textSize="12sp"/>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+
+    <Button
+        android:id="@+id/swapButtonComparison"
+        android:layout_width="80dp"
+        android:layout_height="40dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/comparisonTwoFloorPlan"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="0dp"
+        android:text="Swap"
+        android:textAllCaps="false"
+        android:fontFamily="@font/roboto_regular"
+        android:textColor="@color/white"
+        android:background="@drawable/round_rectangle_button"
+        />
+
+
+
+</RelativeLayout>

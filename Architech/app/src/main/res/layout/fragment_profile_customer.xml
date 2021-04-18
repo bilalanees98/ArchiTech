@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fff">
+
+
+    <!--Info Section-->
+    <LinearLayout
+        android:id="@+id/profileCustomerInfo"
+        android:layout_below="@+id/topBarProfileCustomer"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="5dp"
+        android:layout_marginVertical="50dp"
+        android:gravity="center_horizontal"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@drawable/avatar"
+            app:civ_border_color="#000"
+            app:civ_border_width="2dp"/>
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="match_parent"/>
+        <LinearLayout
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:id="@+id/nameCustomerProfileFrag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="..."
+                android:maxWidth="180dp"
+                android:textColor="#000"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="24sp"/>
+            <TextView
+                android:id="@+id/emailCustomerProfileFrag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="..."
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_thin"
+
+                android:layout_marginTop="10dp"
+                android:maxWidth="150dp"
+                android:textSize="12dp"
+
+
+
+
+                app:drawableStartCompat="@drawable/ic_email"
+
+                android:drawablePadding="5dp"
+
+                />
+            <TextView
+                android:id="@+id/phoneNoCustomerProfileFrag"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="..."
+                android:textColor="@color/black"
+                android:fontFamily="@font/roboto_thin"
+                android:maxWidth="180dp"
+                android:layout_marginTop="3dp"
+                android:textSize="12dp"
+
+
+                app:drawableStartCompat="@drawable/ic_phone"
+
+                android:drawablePadding="5dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                />
+            
+            
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="match_parent"/>
+
+        <Button
+            android:id="@+id/logoutButtonCustomer"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="30dp"
+            android:text="logout"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:padding="3dp"
+            android:textSize="10sp"
+            android:fontFamily="@font/roboto_light"
+            android:background="@drawable/round_button"
+            />
+
+
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_marginHorizontal="25dp"
+        android:id="@+id/myFloorPlansText"
+        android:layout_below="@id/profileCustomerInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="My Floor Plans"
+        android:textSize="28sp"
+        android:textColor="#000"
+        android:fontFamily="@font/roboto_regular"/>
+
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewProfileCustomer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/profileCustomerInfo"
+        android:layout_marginTop="50dp"
+        />
+
+
+    <!--&lt;!&ndash;ADDING WHOLE ROW HARD CODED HERE&ndash;&gt;
+    <LinearLayout
+
+        android:layout_below="@+id/profileCustomerInfo"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/row_card"
+        android:padding="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginHorizontal="25dp"
+        >
+
+        <ImageView
+            android:scaleType="centerCrop"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/traditional_house_design_250x250"
+            />
+
+        <View
+            android:layout_width="15dp"
+            android:layout_height="match_parent"/>
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Elegant Design"
+                android:fontFamily="@font/roboto_medium"
+                android:textSize="18sp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="by "
+                    android:fontFamily="@font/roboto_light"
+                    android:textSize="14sp"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/roboto_light"
+                    android:text="Shayaan Farooq"
+                    android:textSize="14sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Size:                  "
+                    android:fontFamily="@font/roboto_light"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_marginTop="8dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="50 x 90"
+                    android:fontFamily="@font/roboto_light"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bedrooms:       "
+                    android:fontFamily="@font/roboto_light"
+                    android:textSize="12sp"/>
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    android:fontFamily="@font/roboto_light"
+                    android:textSize="12sp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Bathrooms:      "
+                    android:fontFamily="@font/roboto_light"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="6"
+                    android:fontFamily="@font/roboto_light"
+                    android:textSize="12sp"/>
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Cars Capacity: "
+                    android:fontFamily="@font/roboto_light"
+                    android:textSize="12sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="2"
+                    android:fontFamily="@font/roboto_light"
+                    android:textSize="12sp"/>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+-->
+
+
+
+    <ProgressBar
+
+        android:id="@+id/progressBarProfileCustomerFragment"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        android:layout_below="@id/myFloorPlansText"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>

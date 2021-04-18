@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".contractor.MeetingRequestedContractorFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="10dp"
+            android:id="@+id/recyclerViewConfirmedMeetingContractor"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            />
+
+        <ProgressBar
+
+            android:id="@+id/progressBarConfirmedMeetingContractor"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="visible"
+            android:layout_marginTop="250dp"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout>
+    <!--This Linear layout is just a dummy, we gotta put a recycler view here for all meetings-->
+<!--        <LinearLayout-->
+<!--            android:orientation="vertical"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginHorizontal="10dp"-->
+<!--            android:layout_marginVertical="30dp"-->
+<!--            android:background="@drawable/row_card"-->
+<!--            android:padding="15dp"-->
+<!--            >-->
+
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Shayaan Farooq"-->
+<!--                android:textColor="#000"-->
+<!--                android:textSize="18sp"-->
+<!--                android:fontFamily="@font/roboto_medium"-->
+<!--                android:layout_marginVertical="5dp"-->
+<!--                />-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Size of House of Interest: 90 x 50"-->
+<!--                android:textColor="#000"-->
+<!--                android:fontFamily="@font/roboto_light"-->
+<!--                android:layout_marginVertical="2dp"-->
+<!--                />-->
+<!--            <TextView-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Status: Scheduled for 4:00pm - 20/10/2020"-->
+<!--                android:textColor="#000"-->
+<!--                android:fontFamily="@font/roboto_light"-->
+<!--                android:layout_marginVertical="2dp"-->
+<!--                />-->
+
+<!--            <TextView-->
+<!--                android:layout_gravity="right"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:text="Cancel"-->
+<!--                android:textColor="#FB0000"-->
+<!--                android:fontFamily="@font/roboto_medium"-->
+<!--                />-->
+
+<!--        </LinearLayout>-->
+
+
+<!--        <TextView-->
+<!--            android:layout_centerVertical="true"-->
+<!--            android:layout_centerHorizontal="true"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Confirmed Meeting Fragment"-->
+<!--            android:textColor="#CCCCCC"-->
+<!--            android:textSize="24sp"/>-->
+
+
+</FrameLayout>

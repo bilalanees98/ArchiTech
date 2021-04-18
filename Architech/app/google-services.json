@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "396403588110",
+    "firebase_url": "https://architech-fyp-default-rtdb.firebaseio.com",
+    "project_id": "architech-fyp",
+    "storage_bucket": "architech-fyp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396403588110:android:3ada9e4979f873a4b6505f",
+        "android_client_info": {
+          "package_name": "com.architech.architech"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "396403588110-2i83o801lvvgkfgo8ndl068mc7l8vadp.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDU2V4qrB1PiG8nSCBDxlZfnK3S9Eph7Bw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "396403588110-2i83o801lvvgkfgo8ndl068mc7l8vadp.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
