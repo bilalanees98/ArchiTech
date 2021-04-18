@@ -45,11 +45,11 @@ public class FloorPlanDetails extends AppCompatActivity {
     RelativeLayout page;
     FloorPlan floorPlan;
     TextView title, size, bedrooms, bathrooms, cars, owner;
-    Button addToFavourites,findContractor,viewIn3D, compareBtn;
+
     ProgressBar progressBar;
     FirebaseAuth mAuth;
-    ImageView imageView;
-    LinearLayout backButton;
+    ImageView imageView, addToFavourites;
+    LinearLayout backButton, viewIn3D, compareBtn;
 
     String uid="";
     @SuppressLint("DefaultLocale")
@@ -63,7 +63,7 @@ public class FloorPlanDetails extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();//getting authentication manager instance
 
         addToFavourites=findViewById(R.id.add_to_favourites_floorplan_detail);
-        findContractor=findViewById(R.id.find_contractor_floorplan_detail);
+
         viewIn3D = findViewById(R.id.view_in_3d_floorplan_detail);
         compareBtn = findViewById(R.id.compare_floorplan_detail);
 

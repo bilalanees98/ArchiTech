@@ -121,7 +121,8 @@
 
     <!--Favourites Icon-->
     <ImageView
-        android:id="@+id/favouriteIconFloorPlanDetail"
+
+        android:id="@+id/add_to_favourites_floorplan_detail"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentRight="true"
@@ -227,6 +228,7 @@
 
 
         <LinearLayout
+            android:id="@+id/compare_floorplan_detail"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:orientation="horizontal"
@@ -265,6 +267,7 @@
 
 
         <LinearLayout
+            android:id="@+id/view_in_3d_floorplan_detail"
             android:layout_width="0dp"
             android:layout_height="70dp"
             android:orientation="horizontal"
