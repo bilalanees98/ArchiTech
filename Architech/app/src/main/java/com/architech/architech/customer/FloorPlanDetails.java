@@ -97,6 +97,7 @@ public class FloorPlanDetails extends AppCompatActivity {
             compareBtn.setVisibility(View.GONE);
         }
 
+        System.out.print("hey");
 
         addToFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
