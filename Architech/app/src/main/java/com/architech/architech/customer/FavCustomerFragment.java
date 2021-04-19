@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -53,9 +54,7 @@ public class FavCustomerFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         myProfile= getArguments().getParcelable("MYPROFILE");
-//        listOfFloorPlans = new ArrayList<>();
-////        listOfFloorPlans= getArguments().getParcelableArrayList("FLOORPLANS");
-//        listOfFloorPlans= new ArrayList<>(listOfFloorPlans);
+
         listOfFavourites=new ArrayList<>();
         listOfFavouriteFloorplans=new ArrayList<>();
         View view= inflater.inflate(R.layout.fragment_fav_customer,container,false);
@@ -86,7 +85,7 @@ public class FavCustomerFragment extends Fragment {
                 {
                     progressBar.setVisibility(View.GONE);
                 }
-
+                listOfFavouriteFloorplans.clear();
                 for(DataSnapshot s: snapshot.getChildren()){
                     Favourite newFav = s.getValue(Favourite.class);
                     DatabaseReference dbFp = FirebaseDatabase.getInstance().getReference().child("Floorplans");
@@ -95,7 +94,7 @@ public class FavCustomerFragment extends Fragment {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.exists()) {
-                                listOfFavouriteFloorplans.clear();
+
                                 for(DataSnapshot s: snapshot.getChildren()){
                                     FloorPlan newFp = s.getValue(FloorPlan.class);
                                     listOfFavouriteFloorplans.add(new FloorPlan(
@@ -114,8 +113,10 @@ public class FavCustomerFragment extends Fragment {
                                             newFp.getPercentageCoveredArea(),
                                             newFp.getCostEstimate()
                                     ));
+
                                     rvAdapter.notifyDataSetChanged();
                                 }
+
                                 progressBar.setVisibility(View.GONE);
                             }
                             else{
