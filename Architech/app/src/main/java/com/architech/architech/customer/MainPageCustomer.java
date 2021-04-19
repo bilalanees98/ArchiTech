@@ -26,7 +26,7 @@ import com.architech.architech.model.FloorPlan;
 
 import java.util.ArrayList;
 
-public class MainPageCustomer extends AppCompatActivity {
+public class MainPageCustomer extends AppCompatActivity implements DeleteFloorPlanBottomSheet.BottomSheetListener {
 
     BottomNavigationView bottomNav;
     TextView title;
@@ -258,4 +258,16 @@ public class MainPageCustomer extends AppCompatActivity {
     }
 
 
+    //When a floorplan is deleted from my floor plans
+    @Override
+    public void onConfirmPressed(int buttonPressedCode, FloorPlan fp, int position) {
+        Toast.makeText(this, "In MAIN PAGE CUSTOMER- gotta delete " + fp.getTitle() + " from " + position + " " , Toast.LENGTH_SHORT).show();
+
+        //delete this floorplan from firebase here
+
+
+
+        //go back to myfloorplans at the end to reload
+        bottomNav.setSelectedItemId(R.id.profileNavIcon);
+    }
 }

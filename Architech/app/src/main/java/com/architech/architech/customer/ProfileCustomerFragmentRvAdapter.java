@@ -5,12 +5,14 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.architech.architech.R;
@@ -20,7 +22,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class ProfileCustomerFragmentRvAdapter extends RecyclerView.Adapter<ProfileCustomerFragmentRvAdapter.MyViewHolder>{
+public class ProfileCustomerFragmentRvAdapter extends RecyclerView.Adapter<ProfileCustomerFragmentRvAdapter.MyViewHolder> {
 
 
     ArrayList<FloorPlan> listOfFloorPlans;
@@ -38,7 +40,7 @@ public class ProfileCustomerFragmentRvAdapter extends RecyclerView.Adapter<Profi
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemRow= LayoutInflater.from(parent.getContext()).inflate(R.layout.floorplan_row,parent,false);
+        View itemRow= LayoutInflater.from(parent.getContext()).inflate(R.layout.floorplan_row_profile,parent,false);
         return new ProfileCustomerFragmentRvAdapter.MyViewHolder(itemRow);
     }
 
@@ -68,6 +70,17 @@ public class ProfileCustomerFragmentRvAdapter extends RecyclerView.Adapter<Profi
             Picasso.get().load(listOfFloorPlans.get(position).getImageUrl()).fit().centerCrop().placeholder(R.drawable.progress_animation).into(holder.coverImage);
         }
 
+        holder.deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(v.getContext(), "Delete " + position + " ", Toast.LENGTH_SHORT).show();
+                DeleteFloorPlanBottomSheet orderCompletionBottomSheet= new DeleteFloorPlanBottomSheet(listOfFloorPlans.get(position), position);
+                orderCompletionBottomSheet.show(((AppCompatActivity)context).getSupportFragmentManager(), "bottomSheetDelete");
+
+            }
+        });
+
+
         holder.rowItself.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -89,7 +102,7 @@ public class ProfileCustomerFragmentRvAdapter extends RecyclerView.Adapter<Profi
         TextView title, ownerName, size, bedrooms, bathrooms, noOfCars;
         ImageView coverImage;
         LinearLayout rowItself;
-
+        ImageButton deleteButton;
 
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -102,7 +115,7 @@ public class ProfileCustomerFragmentRvAdapter extends RecyclerView.Adapter<Profi
             noOfCars= itemView.findViewById(R.id.row_cars);
             coverImage= itemView.findViewById(R.id.row_cover_image);
             rowItself= itemView.findViewById(R.id.floorPlanRow);
-
+            deleteButton= itemView.findViewById(R.id.deleteButtonFloorPlanRow);
 
         }
     }
