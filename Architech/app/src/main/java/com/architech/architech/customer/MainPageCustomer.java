@@ -13,6 +13,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -261,13 +263,26 @@ public class MainPageCustomer extends AppCompatActivity implements DeleteFloorPl
     //When a floorplan is deleted from my floor plans
     @Override
     public void onConfirmPressed(int buttonPressedCode, FloorPlan fp, int position) {
-        Toast.makeText(this, "In MAIN PAGE CUSTOMER- gotta delete " + fp.getTitle() + " from " + position + " " , Toast.LENGTH_SHORT).show();
+
 
         //delete this floorplan from firebase here
+        DatabaseReference dbFloorplan=FirebaseDatabase.getInstance().getReference("Floorplans").child(fp.getId());
+        dbFloorplan.removeValue().addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                Toast.makeText(MainPageCustomer.this, fp.getTitle()+ " deleted successfully" , Toast.LENGTH_SHORT).show();
+                //go back to myfloorplans at the end to reload
+                bottomNav.setSelectedItemId(R.id.profileNavIcon);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(MainPageCustomer.this,  "Sorry could not remove" , Toast.LENGTH_SHORT).show();
+                //go back to myfloorplans at the end to reload
+                bottomNav.setSelectedItemId(R.id.profileNavIcon);
+            }
+        });
 
 
-
-        //go back to myfloorplans at the end to reload
-        bottomNav.setSelectedItemId(R.id.profileNavIcon);
     }
 }
