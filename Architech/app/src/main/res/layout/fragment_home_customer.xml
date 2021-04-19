@@ -212,7 +212,7 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:gravity="start"
                     android:paddingLeft="5dp"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
 
                     android:fontFamily="@font/roboto_regular"
 
@@ -256,7 +256,7 @@
                     android:textColor="@color/colorPrimaryDark"
                     android:gravity="start"
                     android:paddingLeft="5dp"
-                    android:textSize="20dp"
+                    android:textSize="18dp"
 
 
                     android:fontFamily="@font/roboto_regular"

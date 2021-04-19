@@ -59,9 +59,7 @@ public class FavCustomerFragmentRvAdapter extends RecyclerView.Adapter<FavCustom
         final String car= listOfFloorPlans.get(position).getNoOfCars();
         holder.noOfCars.setText(car);
 
-//        //Image Stuff
-//        int resIdCoverImage =  context.getResources().getIdentifier(listOfFloorPlans.get(position).getPaths().get(0), null, context.getPackageName());
-//        holder.coverImage.setImageResource(resIdCoverImage);
+
         Picasso.get().load(listOfFloorPlans.get(position).getImageUrl()).fit().centerCrop().placeholder(R.drawable.progress_animation).into(holder.coverImage);
 
         holder.rowItself.setOnClickListener(new View.OnClickListener() {

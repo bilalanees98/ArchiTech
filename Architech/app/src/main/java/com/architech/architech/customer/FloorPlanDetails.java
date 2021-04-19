@@ -47,7 +47,7 @@ public class FloorPlanDetails extends AppCompatActivity {
     RelativeLayout page;
     FloorPlan floorPlan;
     TextView title, size, bedrooms, bathrooms, cars, owner;
-
+    boolean favPresentCheck=false;
     ProgressBar progressBar;
     FirebaseAuth mAuth;
     ImageView imageView, addToFavourites;
@@ -133,29 +133,87 @@ public class FloorPlanDetails extends AppCompatActivity {
             }
         });
 
+        //setting red heart if already a favourite
+        populateFavPresentCheck();
+
+
+
+
         addToFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                progressBar.setVisibility(View.VISIBLE);
 
-                DatabaseReference database = FirebaseDatabase.getInstance().getReference().child("Favourites");
-                String key = database.push().getKey();
-                database.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
-                        if(snapshot.exists()){
-                            Boolean favPresentCheck = false;
-                            for(DataSnapshot s: snapshot.getChildren()){
-                                Favourite tempFav = s.getValue(Favourite.class);
-                                if(tempFav.getFloorPlanId().equals(floorPlanId)
-                                && tempFav.getUserId().equals(uid)){
-                                    favPresentCheck = true;
+                if(favPresentCheck){
+                    //remove a favourite and remove fill from the color
+                    progressBar.setVisibility(View.VISIBLE);
+
+                    DatabaseReference database = FirebaseDatabase.getInstance().getReference().child("Favourites");
+                    String key = database.push().getKey();
+                    database.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.exists()) {
+                                favPresentCheck = false;
+                                for (DataSnapshot s : snapshot.getChildren()) {
+                                    Favourite tempFav = s.getValue(Favourite.class);
+                                    if (tempFav.getFloorPlanId().equals(floorPlanId)
+                                            && tempFav.getUserId().equals(uid)) {
+                                        s.getRef().removeValue();
+                                        addToFavourites.setImageResource(R.drawable.ic_baseline_favorite_border_24);
+                                        progressBar.setVisibility(View.GONE);
+                                    }
                                 }
                             }
-                            if(favPresentCheck){
-                                progressBar.setVisibility(View.GONE);
-                                Toast.makeText(FloorPlanDetails.this,"Floorplan already added to favourites"
-                                , Toast.LENGTH_SHORT).show();
+
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    });
+
+
+                }
+                else{
+                    progressBar.setVisibility(View.VISIBLE);
+
+                    DatabaseReference database = FirebaseDatabase.getInstance().getReference().child("Favourites");
+                    String key = database.push().getKey();
+                    database.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
+                            if(snapshot.exists()){
+                                favPresentCheck = false;
+                                for(DataSnapshot s: snapshot.getChildren()){
+                                    Favourite tempFav = s.getValue(Favourite.class);
+                                    if(tempFav.getFloorPlanId().equals(floorPlanId)
+                                            && tempFav.getUserId().equals(uid)){
+                                        favPresentCheck = true;
+                                    }
+                                }
+                                if(favPresentCheck){
+                                    progressBar.setVisibility(View.GONE);
+//                                    Toast.makeText(FloorPlanDetails.this,"Floorplan already added to favourites"
+//                                            , Toast.LENGTH_SHORT).show();
+                                }
+                                else{
+                                    Favourite newFavourite=new Favourite(uid,floorPlanId);
+                                    database.child(key).setValue(newFavourite).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                        @Override
+                                        public void onSuccess(Void aVoid) {
+                                            Toast.makeText(FloorPlanDetails.this,"Floorplan added to favourites",Toast.LENGTH_SHORT).show();
+                                            progressBar.setVisibility(View.GONE);
+                                            addToFavourites.setImageResource(R.drawable.ic_baseline_favorite_24);
+                                        }
+                                    }).addOnFailureListener(new OnFailureListener() {
+                                        @Override
+                                        public void onFailure(@NonNull Exception e) {
+                                            Toast.makeText(FloorPlanDetails.this,"Floorplan could no be added to favourites!",Toast.LENGTH_SHORT).show();
+                                            progressBar.setVisibility(View.GONE);
+                                        }
+                                    });
+                                }
                             }
                             else{
                                 Favourite newFavourite=new Favourite(uid,floorPlanId);
@@ -172,32 +230,18 @@ public class FloorPlanDetails extends AppCompatActivity {
                                         progressBar.setVisibility(View.GONE);
                                     }
                                 });
+//                            progressBar.setVisibility(View.GONE);
                             }
                         }
-                        else{
-                            Favourite newFavourite=new Favourite(uid,floorPlanId);
-                            database.child(key).setValue(newFavourite).addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void aVoid) {
-                                    Toast.makeText(FloorPlanDetails.this,"Floorplan added to favourites",Toast.LENGTH_SHORT).show();
-                                    progressBar.setVisibility(View.GONE);
-                                }
-                            }).addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(FloorPlanDetails.this,"Floorplan could no be added to favourites!",Toast.LENGTH_SHORT).show();
-                                    progressBar.setVisibility(View.GONE);
-                                }
-                            });
-//                            progressBar.setVisibility(View.GONE);
-                        }
-                    }
 
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-                        progressBar.setVisibility(View.GONE);
-                    }
-                });
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+                            progressBar.setVisibility(View.GONE);
+                        }
+                    });
+
+                }
+
 
             }
         });
@@ -260,5 +304,35 @@ public class FloorPlanDetails extends AppCompatActivity {
         else{
             super.onBackPressed();
         }
+    }
+
+
+    public void populateFavPresentCheck(){
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference().child("Favourites");
+        String key = database.push().getKey();
+        database.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+
+                    for(DataSnapshot s: snapshot.getChildren()){
+                        Favourite tempFav = s.getValue(Favourite.class);
+                        if(tempFav.getFloorPlanId().equals(floorPlan.getId())
+                                && tempFav.getUserId().equals(uid)){
+                            favPresentCheck = true;
+                            addToFavourites.setImageResource(R.drawable.ic_baseline_favorite_24);
+                        }
+                    }
+
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                progressBar.setVisibility(View.GONE);
+            }
+        });
+
     }
 }
