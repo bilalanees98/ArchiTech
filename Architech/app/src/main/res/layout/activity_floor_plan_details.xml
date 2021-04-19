@@ -5,7 +5,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".customer.FloorPlanDetails">
+    tools:context=".customer.FloorPlanDetails"
+    android:background="@color/white"
+    >
 
 
 
@@ -19,7 +21,7 @@
         android:orientation="horizontal"
         android:weightSum="10"
         android:elevation="20dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="20dp"
         >
 
         <LinearLayout
@@ -135,6 +137,18 @@
         android:padding="5dp"
         />
 
+    <!--Pinch to zoom-->
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/pinch_to_zoom"
+        android:layout_below="@id/topBarFloorPlanDetails"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginHorizontal="20dp"
+        />
+
+
 
 
 
@@ -154,7 +168,164 @@
         android:layout_alignParentLeft="true"/>
 
 
-    <TextView
+
+    <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nameOfOwnerFloorPlanDetail"
+
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="30dp"
+        android:collapseColumns="2"
+        > <!-- collapse the first column of the table row-->
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="2dp"
+            >
+
+            <!-- Add elements/columns in the first row-->
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Size "
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:layout_below="@+id/imageViewFloorPlanDetail"
+
+                />
+
+            <TextView
+                android:id="@+id/sizeFloorPlanDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="30 x 70 ft"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:layout_below="@+id/imageViewFloorPlanDetail"
+                android:paddingHorizontal="5dp"
+                />
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="2dp"
+            >
+
+            <!-- Add elements/columns in the first row-->
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Bedrooms "
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:layout_below="@+id/imageViewFloorPlanDetail"
+
+                />
+
+            <TextView
+                android:id="@+id/bedroomsFloorPlanDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="2"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:layout_below="@+id/imageViewFloorPlanDetail"
+                android:paddingHorizontal="5dp"
+                />
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="2dp"
+            >
+
+            <!-- Add elements/columns in the first row-->
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Bathrooms "
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:layout_below="@+id/imageViewFloorPlanDetail"
+
+                />
+
+            <TextView
+                android:id="@+id/bathroomsFloorPlanDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="3"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:paddingHorizontal="5dp"
+                android:layout_below="@+id/imageViewFloorPlanDetail"
+
+                />
+        </TableRow>
+
+
+        <TableRow
+            android:visibility="gone"
+            android:id="@+id/tableRow4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <!-- Add elements/columns in the first row-->
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Bathrooms "
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:layout_below="@+id/imageViewFloorPlanDetail"
+
+                />
+
+            <TextView
+                android:id="@+id/carCapacityFloorPlanDetail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="1"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="16sp"
+                android:textColor="#000"
+                android:layout_below="@+id/imageViewFloorPlanDetail"
+
+                />
+        </TableRow>
+
+
+
+
+    </TableLayout>
+
+<!--    <TextView
         android:id="@+id/sizeFloorPlanDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -213,8 +384,7 @@
         android:layout_marginTop="190dp"
         android:layout_marginHorizontal="20dp"
         android:layout_alignParentLeft="true"
-        android:visibility="gone"/>
-
+        android:visibility="gone"/>-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -222,7 +392,8 @@
         android:orientation="horizontal"
         android:weightSum="2"
         android:layout_alignParentBottom="true"
-        android:layout_margin="15dp"
+        android:layout_marginHorizontal="15dp"
+        android:layout_marginBottom="20dp"
         >
 
 
@@ -237,12 +408,13 @@
             android:gravity="center"
             android:layout_marginRight="10dp"
             android:layout_marginEnd="10dp"
+            android:elevation="5dp"
             >
 
             <ImageView
                 android:layout_width="40dp"
                 android:layout_height="match_parent"
-                android:src="@drawable/compare_icon"
+                android:src="@drawable/compare_icon2"
                 app:tint="@color/colorPrimaryDark" />
 
             <TextView
@@ -266,6 +438,7 @@
         </LinearLayout>
 
 
+
         <LinearLayout
             android:id="@+id/view_in_3d_floorplan_detail"
             android:layout_width="0dp"
@@ -274,6 +447,7 @@
             android:layout_weight="1"
             android:background="@drawable/home_tile_bg"
             android:gravity="center"
+            android:elevation="5dp"
             >
 
             <ImageView
