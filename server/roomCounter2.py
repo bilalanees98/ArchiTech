@@ -14,8 +14,7 @@ class InformationCollector:
             (255, 255, 255): 'background - white',  # background
             (192, 192, 224): 'closet - violet',  # closet
             (192, 255, 255): 'bathroom/washroom - cyan',  # bathroom/washroom
-            # livingroom/kitchen/dining room
-            (224, 255, 192): 'livingroom/kitchen/dining room - light green',
+            (224, 255, 192): 'livingroom/kitchen/dining room - light green',# livingroom/kitchen/dining room
             (255, 224, 128): 'bedroom - yellow',  # bedroom
             (255, 160, 96): 'hall - orange',  # hall
             (255, 224, 224): 'balcony',  # balcony
@@ -26,6 +25,7 @@ class InformationCollector:
     def countRooms(self, inputPath):
         print (inputPath)
         im = Image.open(inputPath).getcolors()
+        #[1000,(255,255,255)]
         # print(type(im))
         # print(im.size)
         # print(im.shape)
