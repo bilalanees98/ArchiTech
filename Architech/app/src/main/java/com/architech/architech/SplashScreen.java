@@ -18,7 +18,6 @@ import com.architech.architech.contractor.MainPageContractor;
 import com.architech.architech.customer.MainPageCustomer;
 
 public class SplashScreen extends AppCompatActivity {
-    public static String guestUser = "dsjgkhasdguh8h72134";//to ensure not fuss over anybody entering "guest" as username
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

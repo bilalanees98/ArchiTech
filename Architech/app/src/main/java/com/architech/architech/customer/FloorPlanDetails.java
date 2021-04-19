@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.opengl.Visibility;
 import android.os.Bundle;
 import android.renderscript.Sampler;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -18,6 +19,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.architech.architech.NetworkConfigurations;
 import com.architech.architech.SplashScreen;
 import com.architech.architech.UnityActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -60,6 +62,8 @@ public class FloorPlanDetails extends AppCompatActivity {
         Intent intent= getIntent();
         floorPlan = intent.getParcelableExtra("FLOORPLAN");
 
+        Log.i("FLOORPLANDETAILS",NetworkConfigurations.getIpAddress());
+
         mAuth = FirebaseAuth.getInstance();//getting authentication manager instance
 
         addToFavourites=findViewById(R.id.add_to_favourites_floorplan_detail);
@@ -93,18 +97,39 @@ public class FloorPlanDetails extends AppCompatActivity {
 
         Picasso.get().load(floorPlan.getImageUrl()).into(imageView);
 //        to not show certain elements if the user is a guest
-        if(floorPlan.getOwnerName().equals(SplashScreen.guestUser)){
+        if(floorPlan.getOwnerName().equals(NetworkConfigurations.getGuestUser())){
             owner.setText("");
             addToFavourites.setVisibility(View.GONE);
             compareBtn.setVisibility(View.GONE);
         }
 
-        System.out.print("hey");
-
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                finish();
+                if(floorPlan.getOwnerName().equals(NetworkConfigurations.getGuestUser())){
+                    progressBar.setVisibility(View.VISIBLE);
+                    DatabaseReference database = FirebaseDatabase.getInstance().getReference("Floorplans");
+                    database.child(floorPlan.getId()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            progressBar.setVisibility(View.GONE);
+
+                            if(task.isSuccessful()){
+                                progressBar.setVisibility(View.GONE);
+                                finish();
+                            }
+                            else{
+                                progressBar.setVisibility(View.GONE);
+                                Toast.makeText(FloorPlanDetails.this,"Could not remove temporary floorplan",Toast.LENGTH_SHORT).show();
+                                finish();
+                            }
+                        }
+                    });
+                }
+                else{
+                    finish();
+                }
+
             }
         });
 
@@ -195,6 +220,8 @@ public class FloorPlanDetails extends AppCompatActivity {
             public void onClick(View v) {
                 Intent unityIntent = new Intent(FloorPlanDetails.this, UnityActivity.class);
                 unityIntent.putExtra("FLOORPLAN",floorPlan);
+                unityIntent.putExtra("IP",NetworkConfigurations.getIpAddress());
+                unityIntent.putExtra("PORT",NetworkConfigurations.getPortNumber());
                 startActivity(unityIntent);
 
             }
@@ -209,27 +236,29 @@ public class FloorPlanDetails extends AppCompatActivity {
 
     }
 
-
-
     @Override
     public void onBackPressed() {
-        progressBar.setVisibility(View.VISIBLE);
-//        DatabaseReference database = FirebaseDatabase.getInstance().getReference("Floorplans");
-//        database.child(floorPlan.getId()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-//            @Override
-//            public void onComplete(@NonNull Task<Void> task) {
-//                progressBar.setVisibility(View.GONE);
-//                FloorPlanDetails.super.onBackPressed();
-////                if(task.isSuccessful()){
-////                    progressBar.setVisibility(View.GONE);
-////                    FloorPlanDetails.super.onBackPressed();
-////                }
-////                else{
-////
-////                }
-//            }
-//        });
+        if(floorPlan.getOwnerName().equals(NetworkConfigurations.getGuestUser())){
+            progressBar.setVisibility(View.VISIBLE);
+            DatabaseReference database = FirebaseDatabase.getInstance().getReference("Floorplans");
+        database.child(floorPlan.getId()).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                progressBar.setVisibility(View.GONE);
 
-//        super.onBackPressed();
+                if(task.isSuccessful()){
+                    progressBar.setVisibility(View.GONE);
+                    FloorPlanDetails.super.onBackPressed();
+                }
+                else{
+                    Toast.makeText(FloorPlanDetails.this,"Could not remove temporary floorplan",Toast.LENGTH_SHORT).show();
+                    FloorPlanDetails.super.onBackPressed();
+                }
+            }
+        });
+        }
+        else{
+            super.onBackPressed();
+        }
     }
 }

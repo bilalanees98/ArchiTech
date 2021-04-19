@@ -28,9 +28,16 @@ public class UnityActivity extends UnityPlayerActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
 //        setSupportActionBar(toolbar);
         FloorPlan floorPlan = getIntent().getParcelableExtra("FLOORPLAN");
+        String ipAddress = getIntent().getStringExtra("IP");
+        String portNum = getIntent().getStringExtra("PORT");
         mUnityPlayer = new UnityPlayer(this );
         Log.i("UNIty",floorPlan.getCroppedWidth());
         Log.i("UNIty",floorPlan.getCroppedLength());
+        Log.i("UNITY",ipAddress);
+        Log.i("UNITY",portNum);
+
+        UnityPlayer.UnitySendMessage("Floor","setPortNumber",portNum);
+        UnityPlayer.UnitySendMessage("Floor","setIpAddress",ipAddress);
         UnityPlayer.UnitySendMessage("Floor","setFloorplanName",floorPlan.getId());
         UnityPlayer.UnitySendMessage("Floor","setFloorplanWidth",floorPlan.getCroppedWidth());
         UnityPlayer.UnitySendMessage("Floor","setFloorplanLength",floorPlan.getCroppedLength());

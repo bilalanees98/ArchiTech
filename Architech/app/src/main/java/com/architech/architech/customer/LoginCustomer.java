@@ -18,6 +18,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.architech.architech.NetworkConfigurations;
 import com.architech.architech.SplashScreen;
 import com.architech.architech.UnityActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -225,8 +226,9 @@ public class LoginCustomer extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LoginCustomer.this,AddFloorPlan.class);
-                Customer guest = new Customer(SplashScreen.guestUser,SplashScreen.guestUser,SplashScreen.guestUser,SplashScreen.guestUser);
-                Log.i("LOGIN_CUSTOMER",SplashScreen.guestUser);
+                String guestName = NetworkConfigurations.getGuestUser();
+                Customer guest = new Customer(guestName,guestName,guestName,guestName);
+                Log.i("LOGIN_CUSTOMER",guestName);
                 Log.i("LOGIN_CUSTOMER",guest.getName());
                 intent.putExtra("MYPROFILE",guest);
                 startActivity(intent);

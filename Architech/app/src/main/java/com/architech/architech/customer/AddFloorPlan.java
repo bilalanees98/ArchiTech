@@ -30,6 +30,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.viewpager.widget.ViewPager;
 
+import com.architech.architech.NetworkConfigurations;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -86,11 +87,8 @@ public class AddFloorPlan extends AppCompatActivity {
 
     int croppedWidth, croppedLength;
 
-    //    server listening on port number 5000
-    final String PORT_NUMBER = "5001";
-    EditText ipAddress; //TODO: need to add ipadress field in this file
-//    Spinner spinner; //TODO: create a spinner to show waiting
-    Uri uri;//for storing selected image TODO:need to figure out how to get one uri from multiple images
+
+    Uri uri;//for storing selected image
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -199,101 +197,12 @@ public class AddFloorPlan extends AppCompatActivity {
         });
     }
 
-    void addToDatabase(String key, String costEstimate, String percentageCoveredArea){
-//        String key = FirebaseDatabase.getInstance().getReference().child("Floorplans").push().getKey();
-        DatabaseReference database = FirebaseDatabase.getInstance().getReference()
-                .child("Floorplans")
-                .child(key);
 
 
-        StorageReference st = FirebaseStorage.getInstance().getReference();
-        st = st.child("Floorplan").child(key);
-        st.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Task<Uri> task = taskSnapshot.getStorage().getDownloadUrl();
-
-                task.addOnSuccessListener(new OnSuccessListener<Uri>() {
-                    @Override
-                    public void onSuccess(Uri uri) {
-                        String downloadUrl = uri.toString();
-                        FloorPlan newFloorplan = new FloorPlan(
-                                title.getText().toString().trim(),
-                                uid,
-                                width.getText().toString().trim(),
-                                length.getText().toString().trim(),
-                                carsCapacity.getText().toString().trim(),
-                                bathrooms.getText().toString().trim(),
-                                bedroom.getText().toString().trim(),
-                                key,
-                                myProfile.getName(),
-                                String.valueOf(croppedWidth),
-                                String.valueOf(croppedLength),
-                                downloadUrl,
-                                percentageCoveredArea,
-                                costEstimate
-                        );
-//                        imagePaths.add(dp);
-                        DatabaseReference database2 = FirebaseDatabase.getInstance().getReference()
-                                .child("Floorplans")
-                                .child(key);
-                        database2.setValue(newFloorplan).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()){
-                                    progressBar.setVisibility(View.GONE);
-                                    Intent intent= new Intent(AddFloorPlan.this, FloorPlanDetails.class);
-                                    intent.putExtra("FLOORPLAN",newFloorplan);
-                                    startActivity(intent);
-                                    finish();
-                                }
-                                else{
-                                    Toast.makeText(AddFloorPlan.this, "Floorplan uploading failed!", Toast.LENGTH_LONG).show();
-                                    progressBar.setVisibility(View.GONE);
-                                }
-                            }
-                        });
-//                        Intent intent= new Intent(AddFloorPlan.this, MainPageCustomer.class);
-//                        Intent intent= new Intent(AddFloorPlan.this, FloorPlanDetails.class);
-//                        intent.putExtra("FLOORPLAN",newFloorplan);
-//                        startActivity(intent);
-//                        finish();
-                    }
-                }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(AddFloorPlan.this, "Floorplan uploading failed!", Toast.LENGTH_LONG).show();
-                        progressBar.setVisibility(View.GONE);
-                    }
-                });
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(AddFloorPlan.this, "Image uploading failed!", Toast.LENGTH_LONG).show();
-                        progressBar.setVisibility(View.GONE);
-                    }
-                });
-
-    }
-
-    //-------------------------from original architech with changes
-//    TODO: 1- need to figure out how to get the floor plan image uri from multiple uploaded images - DONE
-//    TODO: 2- receive an array from server side instead of image - DONE
-//    TODO: 3- have to somehow add cropping image libraries' select image function from original architech - DONE
-//    TODO: 4- storing predictionArray in firebase
-//    TODO: 5- launching unity activity and passing data to it
-//    TODO: 6- comparison activity
-//    TODO: 7- add 3d modelling button in add activty and floorplan detail activity
-//    TODO: 8- add ip address field in add activity and also add spinner
-//    TODO: 9- Information display kidhr fit krni hai
-//    TODO: 10- what to store in firebase tables for floorplan, meetings etc - have to make changes in all recycler views accordingly
-//    TODO: 11- make better names for image that are sent to server - low priority
     void connectServer(View v) throws IOException {
 
-//        ipAddress = findViewById(R.id.ipAddress);//TODO: add ip address field in xml, hardcoded value for now
-        String ipv4Address = "192.168.18.8";//ipAddress.getText().toString();
-        String portNumber = PORT_NUMBER;
+        String ipv4Address = NetworkConfigurations.getIpAddress();
+        String portNumber = NetworkConfigurations.getPortNumber();
 
         String postUrl= "http://"+ipv4Address+":"+portNumber+"/predict";
 
@@ -301,12 +210,10 @@ public class AddFloorPlan extends AppCompatActivity {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inPreferredConfig = Bitmap.Config.RGB_565;
 //      convert image to byte array, store its string value for sending
-        byte[] byteArray = convertImageToByte(uri);//TODO: get stored uri, uri needs to be stored in onActivityResult
+        byte[] byteArray = convertImageToByte(uri);
 
         File f = new File(uri.toString());
-//        filename that is sent to server, to make it unique TODO:make better names, but this is low priority
-//        String key = FirebaseDatabase.getInstance().getReference().child("Floorplans").push().getKey();
-//        String imageName = f.getName();
+//        filename that is sent to server, to make it unique
         String imageName = FirebaseDatabase.getInstance().getReference().child("Floorplans").push().getKey();
 
 //        request holds image(file), lenght and width
@@ -341,9 +248,9 @@ public class AddFloorPlan extends AppCompatActivity {
 
 //        create client with long timeouts. bandwith issues may cause longer wait times
         OkHttpClient client = new OkHttpClient.Builder()
-                .connectTimeout(60, TimeUnit.SECONDS)
-                .writeTimeout(60, TimeUnit.SECONDS)
-                .readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(120, TimeUnit.SECONDS)
+                .writeTimeout(120, TimeUnit.SECONDS)
+                .readTimeout(120, TimeUnit.SECONDS)
                 .build();
 
         Request request = new Request.Builder()
@@ -411,32 +318,87 @@ public class AddFloorPlan extends AppCompatActivity {
                         roomCounts.add(temp.getString(1));
                         roomTypes.add(temp.getString(0));
                     }
-//                  adding received data from response to intent
-//                    TODO: create intent for unity activity and pass just the predictionArray
-//                    Intent i = new Intent(ImageUpload.this, ModelDisplay.class);
-//                    i.putExtra("PRED_IMAGE", jsonObject.get("ImageBytes").toString());
-//                    i.putStringArrayListExtra("ROOM_COUNT", roomCounts);
-//                    i.putStringArrayListExtra("ROOM_TYPES", roomTypes);
-//                    i.putExtra("COST_ESTIMATE", costEstimate);
-////                    Percentage Covered Area
-//                    i.putExtra("PCA", jsonObject.get("percentageCoveredArea").toString());
-//                    startActivity(i);
 
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 addToDatabase(key,costEstimate,percentageCoveredArea);
-                // In order to access the TextView inside the UI thread, the code is executed inside runOnUiThread()
-//                runOnUiThread(new Runnable() {
-//                    @Override
-//                    public void run() {
-////                        responseImg.setImageBitmap(finalDecodedBytes);
-//                        progressBar.setVisibility(View.GONE);
-//
-//                    }
-//                });
+
             }
         });
+    }
+
+    void addToDatabase(String key, String costEstimate, String percentageCoveredArea){
+//        String key = FirebaseDatabase.getInstance().getReference().child("Floorplans").push().getKey();
+        DatabaseReference database = FirebaseDatabase.getInstance().getReference()
+                .child("Floorplans")
+                .child(key);
+
+
+        StorageReference st = FirebaseStorage.getInstance().getReference();
+        st = st.child("Floorplan").child(key);
+        st.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            @Override
+            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                Task<Uri> task = taskSnapshot.getStorage().getDownloadUrl();
+
+                task.addOnSuccessListener(new OnSuccessListener<Uri>() {
+                    @Override
+                    public void onSuccess(Uri uri) {
+                        String downloadUrl = uri.toString();
+                        FloorPlan newFloorplan = new FloorPlan(
+                                title.getText().toString().trim(),
+                                uid,
+                                width.getText().toString().trim(),
+                                length.getText().toString().trim(),
+                                carsCapacity.getText().toString().trim(),
+                                bathrooms.getText().toString().trim(),
+                                bedroom.getText().toString().trim(),
+                                key,
+                                myProfile.getName(),
+                                String.valueOf(croppedWidth),
+                                String.valueOf(croppedLength),
+                                downloadUrl,
+                                percentageCoveredArea,
+                                costEstimate
+                        );
+//                        imagePaths.add(dp);
+                        DatabaseReference database2 = FirebaseDatabase.getInstance().getReference()
+                                .child("Floorplans")
+                                .child(key);
+                        database2.setValue(newFloorplan).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if(task.isSuccessful()){
+                                    progressBar.setVisibility(View.GONE);
+                                    Intent intent= new Intent(AddFloorPlan.this, FloorPlanDetails.class);
+                                    intent.putExtra("FLOORPLAN",newFloorplan);
+                                    startActivity(intent);
+                                    finish();
+                                }
+                                else{
+                                    Toast.makeText(AddFloorPlan.this, "Floorplan uploading failed! - 1", Toast.LENGTH_LONG).show();
+                                    progressBar.setVisibility(View.GONE);
+                                }
+                            }
+                        });
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(AddFloorPlan.this, "Floorplan uploading failed! - 2", Toast.LENGTH_LONG).show();
+                        progressBar.setVisibility(View.GONE);
+                    }
+                });
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                Toast.makeText(AddFloorPlan.this, "Image uploading failed!", Toast.LENGTH_LONG).show();
+                progressBar.setVisibility(View.GONE);
+            }
+        });
+
     }
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

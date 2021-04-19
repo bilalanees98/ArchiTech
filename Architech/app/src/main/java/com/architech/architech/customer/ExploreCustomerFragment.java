@@ -312,9 +312,6 @@ public class ExploreCustomerFragment extends Fragment {
             filteredList.addAll(listForRecycler);
         }
 
-
-
-
     }
 
     private void populateMyProfile() {
