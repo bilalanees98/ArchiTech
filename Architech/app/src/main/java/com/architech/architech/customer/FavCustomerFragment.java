@@ -116,7 +116,7 @@ public class FavCustomerFragment extends Fragment {
 
                                     rvAdapter.notifyDataSetChanged();
                                 }
-                                Toast.makeText(getActivity(), "n= "+Integer.toString(listOfFavouriteFloorplans.size()), Toast.LENGTH_SHORT).show();
+
                                 progressBar.setVisibility(View.GONE);
                             }
                             else{
