@@ -156,7 +156,8 @@ public class SignupCustomer extends AppCompatActivity {
                                                     name_input.getText().toString(),
                                                     phone_input.getText().toString(),
                                                     email_input.getText().toString(),
-                                                    uid
+                                                    uid,
+                                                    uri.toString()
 
                                             );
                                             DatabaseReference database = FirebaseDatabase.getInstance().getReference()
@@ -184,7 +185,8 @@ public class SignupCustomer extends AppCompatActivity {
                                     name_input.getText().toString(),
                                     phone_input.getText().toString(),
                                     email_input.getText().toString(),
-                                    uid
+                                    uid,
+                                    ""
 
                             );
                             DatabaseReference database = FirebaseDatabase.getInstance().getReference()

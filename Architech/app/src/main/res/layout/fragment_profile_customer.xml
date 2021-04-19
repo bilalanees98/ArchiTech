@@ -20,11 +20,12 @@
 
         <de.hdodenhof.circleimageview.CircleImageView
 
+            android:id="@+id/image_view_fragment_profile_customer"
+            android:elevation="5dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:src="@drawable/avatar"
-            app:civ_border_color="#000"
-            app:civ_border_width="2dp"/>
+            android:src="@drawable/avatar2"
+       />
 
         <View
             android:layout_width="20dp"

@@ -8,6 +8,7 @@ public class Customer implements Parcelable {
     String phone;
     String email;
     String uid;
+    String imageUrl;
 
     public Customer() {
     }
@@ -17,8 +18,16 @@ public class Customer implements Parcelable {
         this.phone = phone;
         this.email = email;
         this.uid = uid;
+        this.imageUrl=null;
     }
 
+    public Customer(String name, String phone, String email, String uid, String imageUrl) {
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.uid = uid;
+        this.imageUrl = imageUrl;
+    }
 
     public String getName() {
         return name;
@@ -52,6 +61,14 @@ public class Customer implements Parcelable {
         this.uid = uid;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -74,6 +91,7 @@ public class Customer implements Parcelable {
         phone = in.readString();
         email = in.readString();
         uid = in.readString();
+        imageUrl = in.readString();
     }
 
     @Override
@@ -82,5 +100,6 @@ public class Customer implements Parcelable {
         dest.writeString(phone);
         dest.writeString(email);
         dest.writeString(uid);
+        dest.writeString(imageUrl);
     }
 }

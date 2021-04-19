@@ -31,14 +31,18 @@ import com.architech.architech.model.Favourite;
 import com.architech.architech.model.FloorPlan;
 import com.architech.architech.model.FloorPlanRecyclerObject;
 import com.architech.architech.model.Image;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class ProfileCustomerFragment extends Fragment {
 
     Customer myProfile;
     ArrayList<FloorPlan> listOfFloorPlans;
 
+    CircleImageView profilePhoto;
     Button logoutButton;
     ProgressBar progressBar;
     TextView name, phone, email;
@@ -63,9 +67,14 @@ public class ProfileCustomerFragment extends Fragment {
         email=  view.findViewById(R.id.emailCustomerProfileFrag);
         progressBar= view.findViewById(R.id.progressBarProfileCustomerFragment);
         logoutButton= view.findViewById(R.id.logoutButtonCustomer);
+        profilePhoto=view.findViewById(R.id.image_view_fragment_profile_customer);
+
+
+
 
         buildRecyclerView(view); //does what it says
         getMyProfile(uid);
+
 
 
 
@@ -106,6 +115,10 @@ public class ProfileCustomerFragment extends Fragment {
                     phone.setText(myProfile.getPhone());
                     email.setText(myProfile.getEmail());
                     setMyFloorPlans(); //out of all floor plans, filters for my profile
+                    if(!myProfile.getImageUrl().isEmpty()){
+                        Picasso.get().load(myProfile.getImageUrl()).fit().centerCrop().into(profilePhoto);
+                    }
+
                 }
                 else
                 {
