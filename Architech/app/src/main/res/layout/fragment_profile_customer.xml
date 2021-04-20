@@ -92,19 +92,27 @@
             android:layout_width="10dp"
             android:layout_height="match_parent"/>
 
-        <Button
+        <ImageView
             android:id="@+id/logoutButtonCustomer"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_marginTop="30dp"
-            android:text="logout"
-            android:textColor="@color/white"
-            android:textAllCaps="false"
-            android:padding="3dp"
+
+            android:src="@drawable/logout_icon"
+
+
+
+
+            android:paddingVertical="10dp"
+            android:paddingLeft="3dp"
+            android:paddingStart="3dp"
+
             android:textSize="10sp"
             android:fontFamily="@font/roboto_light"
             android:background="@drawable/round_button"
-            />
+            android:backgroundTint="@color/white"
+            android:elevation="4dp"
+            app:tint="@color/grey" />
 
 
 
