@@ -46,7 +46,7 @@ public class FloorPlanDetails extends AppCompatActivity {
 
     RelativeLayout page;
     FloorPlan floorPlan;
-    TextView title, size, bedrooms, bathrooms, cars, owner;
+    TextView title, size, bedrooms, bathrooms, cars, owner, costEstimate;
     boolean favPresentCheck=false;
     ProgressBar progressBar;
     FirebaseAuth mAuth;
@@ -81,6 +81,7 @@ public class FloorPlanDetails extends AppCompatActivity {
         progressBar= findViewById(R.id.progressBarAddToFavs);
         imageView = findViewById(R.id.imageViewFloorPlanDetail);
         backButton= findViewById(R.id.backButtonFloorPlanDetails);
+        costEstimate = findViewById(R.id.costEstimateFloorPlanDetail);
 
         String floorPlanId=floorPlan.getId();
         if(mAuth.getCurrentUser()!=null){
@@ -89,11 +90,13 @@ public class FloorPlanDetails extends AppCompatActivity {
 
 
         title.setText(floorPlan.getTitle());
-        size.setText(String.format("Size: %s", floorPlan.getSize()));
-        bedrooms.setText(String.format("Bedrooms: %s", floorPlan.getBedrooms()));
-        bathrooms.setText(String.format("Bathrooms: %s", floorPlan.getBathrooms()));
-        cars.setText(String.format("Max Cars Capacity: %s", floorPlan.getNoOfCars()));
+        size.setText(floorPlan.getSize());
+        bedrooms.setText(floorPlan.getBedrooms());
+        bathrooms.setText(floorPlan.getBathrooms());
+        cars.setText(floorPlan.getNoOfCars());
         owner.setText(String.format("by %s", floorPlan.getOwnerName()));
+        costEstimate.setText("Rs. " + floorPlan.getCostEstimate());
+
 
         Picasso.get().load(floorPlan.getImageUrl()).into(imageView);
 //        to not show certain elements if the user is a guest

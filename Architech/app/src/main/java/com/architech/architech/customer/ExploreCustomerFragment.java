@@ -162,6 +162,7 @@ public class ExploreCustomerFragment extends Fragment {
         database.addChildEventListener(new ChildEventListener() {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                progressBar.setVisibility(View.VISIBLE);
                 FloorPlan newFp = snapshot.getValue(FloorPlan.class);
                 String key = snapshot.getKey();
                 keysFloorPlanInFirebase.add(key);
@@ -215,10 +216,7 @@ public class ExploreCustomerFragment extends Fragment {
                         newFp.getPercentageCoveredArea(),
                         newFp.getCostEstimate()
                 ));
-
                 adapter.notifyDataSetChanged();
-
-
 
             }
 

@@ -174,26 +174,27 @@ public class ComparisonListPage extends AppCompatActivity {
             @Override
             public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 FloorPlan newFp = snapshot.getValue(FloorPlan.class);
-                String key = snapshot.getKey();
-                keysFloorPlanInFirebase.add(key);
-                listForRecycler.add(new FloorPlan(
-                        newFp.getTitle(),
-                        newFp.getOwner(),
-                        newFp.getWidth(),
-                        newFp.getLength(),
-                        newFp.getNoOfCars(),
-                        newFp.getBathrooms(),
-                        newFp.getBedrooms(),
-                        newFp.getId(),
-                        newFp.getOwnerName(),
-                        newFp.getCroppedWidth(),
-                        newFp.getCroppedLength(),
-                        newFp.getImageUrl(),
-                        newFp.getPercentageCoveredArea(),
-                        newFp.getCostEstimate()
-                ));
-
-//                            keysFloorPlanInFirebase.add(key);
+                if(!newFp.getId().equals(floorPlanOne.getId())) {
+                    String key = snapshot.getKey();
+                    keysFloorPlanInFirebase.add(key);
+                    listForRecycler.add(new FloorPlan(
+                            newFp.getTitle(),
+                            newFp.getOwner(),
+                            newFp.getWidth(),
+                            newFp.getLength(),
+                            newFp.getNoOfCars(),
+                            newFp.getBathrooms(),
+                            newFp.getBedrooms(),
+                            newFp.getId(),
+                            newFp.getOwnerName(),
+                            newFp.getCroppedWidth(),
+                            newFp.getCroppedLength(),
+                            newFp.getImageUrl(),
+                            newFp.getPercentageCoveredArea(),
+                            newFp.getCostEstimate()
+                    ));
+                }
+//              keysFloorPlanInFirebase.add(key);
                 adapter.notifyDataSetChanged();
 
                 //making filtered list same as listforrecycler initially
@@ -208,25 +209,26 @@ public class ComparisonListPage extends AppCompatActivity {
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                 FloorPlan newFp = snapshot.getValue(FloorPlan.class);
-                String key = snapshot.getKey();
-                int index = keysFloorPlanInFirebase.indexOf(key);
-                listForRecycler.set(index,new FloorPlan(
-                        newFp.getTitle(),
-                        newFp.getOwner(),
-                        newFp.getWidth(),
-                        newFp.getLength(),
-                        newFp.getNoOfCars(),
-                        newFp.getBathrooms(),
-                        newFp.getBedrooms(),
-                        newFp.getId(),
-                        newFp.getOwnerName(),
-                        newFp.getCroppedWidth(),
-                        newFp.getCroppedLength(),
-                        newFp.getImageUrl(),
-                        newFp.getPercentageCoveredArea(),
-                        newFp.getCostEstimate()
-                ));
-
+                if(!newFp.getId().equals(floorPlanOne.getId())) {
+                    String key = snapshot.getKey();
+                    int index = keysFloorPlanInFirebase.indexOf(key);
+                    listForRecycler.set(index, new FloorPlan(
+                            newFp.getTitle(),
+                            newFp.getOwner(),
+                            newFp.getWidth(),
+                            newFp.getLength(),
+                            newFp.getNoOfCars(),
+                            newFp.getBathrooms(),
+                            newFp.getBedrooms(),
+                            newFp.getId(),
+                            newFp.getOwnerName(),
+                            newFp.getCroppedWidth(),
+                            newFp.getCroppedLength(),
+                            newFp.getImageUrl(),
+                            newFp.getPercentageCoveredArea(),
+                            newFp.getCostEstimate()
+                    ));
+                }
                 adapter.notifyDataSetChanged();
 
                 Toast.makeText(ComparisonListPage.this, "Size of listForRecycler", Toast.LENGTH_SHORT).show();

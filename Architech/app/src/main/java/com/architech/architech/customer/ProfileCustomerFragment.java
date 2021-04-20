@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -43,7 +44,7 @@ public class ProfileCustomerFragment extends Fragment {
     ArrayList<FloorPlan> listOfFloorPlans;
 
     CircleImageView profilePhoto;
-    Button logoutButton;
+    ImageView logoutButton;
     ProgressBar progressBar;
     TextView name, phone, email;
     RecyclerView recyclerView;

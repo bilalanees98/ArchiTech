@@ -76,7 +76,6 @@ public class ProfileCustomerFragmentRvAdapter extends RecyclerView.Adapter<Profi
                 Toast.makeText(v.getContext(), "Delete " + position + " ", Toast.LENGTH_SHORT).show();
                 DeleteFloorPlanBottomSheet orderCompletionBottomSheet= new DeleteFloorPlanBottomSheet(listOfFloorPlans.get(position), position);
                 orderCompletionBottomSheet.show(((AppCompatActivity)context).getSupportFragmentManager(), "bottomSheetDelete");
-
             }
         });
 
@@ -86,6 +85,9 @@ public class ProfileCustomerFragmentRvAdapter extends RecyclerView.Adapter<Profi
             public void onClick(View v) {
                 Toast.makeText(v.getContext(),Integer.toString(position)+"", Toast.LENGTH_SHORT).show();
                 //TODO: my floor plan detail/edit page
+                Intent i = new Intent(context,FloorPlanDetails.class);
+                i.putExtra("FLOORPLAN",listOfFloorPlans.get(position));
+                context.startActivity(i);
             }
         });
     }
