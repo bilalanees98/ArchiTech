@@ -139,9 +139,6 @@ public class FloorPlanDetails extends AppCompatActivity {
         //setting red heart if already a favourite
         populateFavPresentCheck();
 
-
-
-
         addToFavourites.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,6 +159,7 @@ public class FloorPlanDetails extends AppCompatActivity {
                                     if (tempFav.getFloorPlanId().equals(floorPlanId)
                                             && tempFav.getUserId().equals(uid)) {
                                         s.getRef().removeValue();
+                                        Toast.makeText(FloorPlanDetails.this,"Removing from favourites", Toast.LENGTH_SHORT).show();
                                         addToFavourites.setImageResource(R.drawable.ic_baseline_favorite_border_24);
                                         progressBar.setVisibility(View.GONE);
                                     }
@@ -197,6 +195,7 @@ public class FloorPlanDetails extends AppCompatActivity {
                                 }
                                 if(favPresentCheck){
                                     progressBar.setVisibility(View.GONE);
+                                    addToFavourites.setImageResource(R.drawable.ic_baseline_favorite_24);
 //                                    Toast.makeText(FloorPlanDetails.this,"Floorplan already added to favourites"
 //                                            , Toast.LENGTH_SHORT).show();
                                 }
@@ -208,6 +207,7 @@ public class FloorPlanDetails extends AppCompatActivity {
                                             Toast.makeText(FloorPlanDetails.this,"Floorplan added to favourites",Toast.LENGTH_SHORT).show();
                                             progressBar.setVisibility(View.GONE);
                                             addToFavourites.setImageResource(R.drawable.ic_baseline_favorite_24);
+                                            favPresentCheck = true;
                                         }
                                     }).addOnFailureListener(new OnFailureListener() {
                                         @Override
@@ -225,6 +225,7 @@ public class FloorPlanDetails extends AppCompatActivity {
                                     public void onSuccess(Void aVoid) {
                                         Toast.makeText(FloorPlanDetails.this,"Floorplan added to favourites",Toast.LENGTH_SHORT).show();
                                         progressBar.setVisibility(View.GONE);
+                                        addToFavourites.setImageResource(R.drawable.ic_baseline_favorite_24);
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                                     @Override

@@ -307,7 +307,8 @@
                 />
 
             <TextView
-                android:id="@+id/carCapacityFloorPlanDetail"
+
+                android:id="@+id/costEstimateFloorPlanDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="5dp"
@@ -341,7 +342,7 @@
                 />
 
             <TextView
-                android:id="@+id/costEstimateFloorPlanDetail"
+                android:id="@+id/carCapacityFloorPlanDetail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingHorizontal="5dp"
