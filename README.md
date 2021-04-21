@@ -6,12 +6,15 @@ ArchiTech is a user friendly and easy-to-use Android application-based platform 
 Moreover, with the information obtained the platform will provide estimates of the cost of grey structures from different construction companies, these costs will also be comparable in order to facilitate better decision making. Furthermore, users will be able to search for and view the different models and floor plans uploaded by other users. Users will also be able to compare the information of different models and floor plans as well.
 
 # Description
-There are 2 folders: ArchiTechClient and server. 
-The client is an android application that for the time being provides a basic UI for demoing the project
+There are 3 folders: Architech, MeshTutorial and server. 
+The client (Architech) is an android application that provides a robust and attractive platform and all required platform interactions.
+The MeshTutorial is actually the Unity#d project that has been converted into an android library and has been added to the android application. It basically handles the actual construction of the 3D model.
 The server side is flask server that runs on localhost. It also contains the python scripts for floorplan recognition, post-processing and information collection. The server is also supposed to contain the DL model for floorplan recognition.
 
 # How to run
-The ArchiTechClient can easily be run by cloning the repo into android studio.
+The Architech can easily be run by cloning the repo into android studio.
+
+The MeshTutorial folder actually only holds the assets for the unity project. The actual library is already inside the android application. This is only provided if someone wishes to see the project in Untiy3D. To do that simply create a new empty Unity3D project and replace its Assets folder with the provided Assets folder.
 
 The server side contains all the files and folders necessary for running the server apart from the libraries and the model itself. For the libraries a requirements.txt is uploaded for installing the specific versions of the libraries (use "pip install -r requirements.txt" - be sure to update pip first). For the model, create a folder named "pretrained" in the server directory and add the model in the zip file from the following link to the folder:
 https://mycuhk-my.sharepoint.com/:f:/g/personal/1155052510_link_cuhk_edu_hk/EgyJhisy04hNnxKncWl5zksBf9zDKDpMJ7c0V-q53_pxuA?e=P0BjZd
