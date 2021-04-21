@@ -8,7 +8,7 @@ Moreover, with the information obtained the platform will provide estimates of t
 # Description
 There are 3 folders: Architech, MeshTutorial and server. 
 The client (Architech) is an android application that provides a robust and attractive platform and all required platform interactions.
-The MeshTutorial is actually the Unity#d project that has been converted into an android library and has been added to the android application. It basically handles the actual construction of the 3D model.
+The MeshTutorial is actually the Unity3D project that has been converted into an android library and has been added to the android application. It basically handles the actual construction of the 3D model.
 The server side is flask server that runs on localhost. It also contains the python scripts for floorplan recognition, post-processing and information collection. The server is also supposed to contain the DL model for floorplan recognition.
 
 # How to run
