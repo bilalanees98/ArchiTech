@@ -45,7 +45,7 @@ public class SplashScreen extends AppCompatActivity {
                     if (snapshot.getValue() == null) {
                         // The child doesn't exist
                         Log.d("Splash Screen- ", "User Does not Exists In Customer User Table " + user.getEmail());
-                        Intent goToHomeContractor= new Intent(com.architech.architech.SplashScreen.this, MainPageContractor.class);
+                        Intent goToHomeContractor= new Intent(com.architech.architech.SplashScreen.this, com.architech.architech.customer.LoginCustomer.class);
                         finish();
                         startActivity(goToHomeContractor);
                     }
