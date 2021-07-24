@@ -148,8 +148,10 @@ def getInfo(input_path,img,originalLength, originalWidth, length, width, costs):
 
 if __name__ == '__main__':
     # app.run(debug=True)
-    scraper = Scraper()
-    costs = scraper.scrape()
+    # scraper = Scraper()
+    # costs = scraper.scrape()
+    # costs.pop(0)
+    # print(costs)
     # below costs list is for testing, scraping takes a bit longer
-    # costs = ['1350','1275','1250']
+    costs = ['1450','1400','1350']
     app.run(host="0.0.0.0", port=5001, debug=True)

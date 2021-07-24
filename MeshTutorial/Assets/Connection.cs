@@ -44,7 +44,7 @@ public class Connection: MonoBehaviour
     {
         // IMPORTANT
         // a way of running this function in parallel sort of - only for running on PC, comment otherwise
-        //  StartCoroutine(GetText());
+         //StartCoroutine(GetText());
     }
 
 
@@ -58,8 +58,11 @@ public class Connection: MonoBehaviour
     {
 
         // IMPORTANT - uncomment when running on pc
-        // serverIpAddress = "192.168.18.8";
-        // serverPortNumber = "5001";
+        //serverIpAddress = "127.0.0.1";
+        //serverIpAddress = "192.168.43.9";
+
+        
+        //serverPortNumber = "5002";
         // "http://192.168.18.8:5001/getFloorplanForUnity"
         postURL = string.Format("http://{0}:{1}/getFloorplanForUnity", serverIpAddress, serverPortNumber);
         // postURL = "http://" + serverIpAddress + ":" + serverPortNumber + "/getFloorplanForUnity";
@@ -69,7 +72,7 @@ public class Connection: MonoBehaviour
         
         // IMPORTANT
         // these need to be uncommented when testing on PC
-        // floorplanName = "cropped2890740263112025085.jpg";
+        //floorplanName = "cropped2890740263112025085.jpg";
         // floorplanName = "cropped1288408858795941961.jpg";
         formData.AddField("floorplanName", floorplanName);
 
@@ -96,8 +99,8 @@ public class Connection: MonoBehaviour
             // IMPORTANT
             // only needed for testing on PC - need to be set according to picture chosen
             // format: floorplanWidth X floorplanLength
-			// floorplanWidth = 384;
-			// floorplanLength = 437;
+			//floorplanWidth = 384;
+			//floorplanLength = 437;
 
             // will hold meaningful data of floorplan array
 			int[] odds = new int[floorplanWidth * floorplanLength];
@@ -161,9 +164,11 @@ public class Connection: MonoBehaviour
                         GameObject myObject = Instantiate(wall_cube) as GameObject;
                         myObject.transform.position = new Vector3(i - (floorplanLength/2), 4, j - (floorplanWidth/2) );
                         myObject.transform.SetParent(parent.transform);
+                        
                     }
                 }
             }
+            wall_cube.SetActive(false);
         }
             
     }

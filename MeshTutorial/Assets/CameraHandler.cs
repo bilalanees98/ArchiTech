@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class CameraHandler : MonoBehaviour {
 
@@ -11,7 +12,7 @@ public class CameraHandler : MonoBehaviour {
     private static readonly float[] BoundsZ = new float[]{-400f, 400f};
     private static readonly float[] ZoomBounds = new float[]{5f, 100f};
     
-    private Camera cam;
+    public Camera cam;
     
     private Vector3 lastPanPosition;
     private int panFingerId; // Touch mode only
@@ -19,9 +20,19 @@ public class CameraHandler : MonoBehaviour {
     private bool wasZoomingLastFrame; // Touch mode only
     private Vector2[] lastZoomPositions; // Touch mode only
 
+    // private Button firstPersonButton;
+
 	void Start(){
 		//this.transform.rotation = Quaternion.Euler(90, -90, 0);
+        // firstPersonButton.onClick.AddListener(TaskOnClick);
 	}
+
+     void TaskOnClick()
+    {
+        //Output this to console when Button1 or Button3 is clicked
+        Debug.Log("You have clicked the button!");
+
+    }
 
     void Awake() {
         cam = GetComponent<Camera>();
@@ -35,6 +46,10 @@ public class CameraHandler : MonoBehaviour {
         } else {
             HandleMouse();
         }
+        if (Input.GetKeyDown(KeyCode.D))
+            transform.Rotate(Vector3.up*9);
+        if (Input.GetKeyDown(KeyCode.A))
+            transform.Rotate(Vector3.down*9);
     }
     
     void HandleTouch() {
@@ -117,4 +132,30 @@ public class CameraHandler : MonoBehaviour {
     
         cam.fieldOfView = Mathf.Clamp(cam.fieldOfView - (offset * speed), ZoomBounds[0], ZoomBounds[1]);
     }
+
+
+
+    // float camRotationDuration = 0.5f; //This value is in seconds
+    // bool isCameraRotating = false;
+    // void RotateCamera()
+    // {
+    //     camRotation = Input.GetAxis("Camera Rotate") * camRotationSpeed;
+
+    //     if (Input.GetButtonDown("Camera Rotate")) 
+    //     {
+    //         if (!isCameraRotating)
+    //         {
+    //             transform.DORotate(new Vector3(0, camRotation , 0), camRotationDuration);
+    //             isCameraRotating = true;
+    //             Invoke("SetCameraRotateToFalse", camRotationDuration);
+    //         }
+    //     }
+    // }
+
+    // private void SetCameraRotateToFalse()
+    // {
+    //     isCameraRotating = false;
+    // }
+    
+
 }

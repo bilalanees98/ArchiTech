@@ -604,3 +604,57 @@ console.warn: SearchSettings: "get: No settings file exists, new profile?" (new 
 1618854898833	Marionette	INFO	Listening on port 50379
 1618854898931	Marionette	WARN	TLS certificate errors will be ignored for this session
 1618854906684	Marionette	INFO	Stopped listening on port 50379
+1627058186289	mozrunner::runner	INFO	Running command: "C:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe" "-marionette" "--headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\SC\\AppData\\Local\\Temp\\rust_mozprofilewioqlL"
+*** You are running in headless mode.
+1627058187014	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\SC\\AppData\\Local\\Temp\\rust_mozprofilewioqlL\\search.json.mozlz4", (void 0)))
+1627058188869	Marionette	INFO	Listening on port 60581
+1627058189012	Marionette	WARN	TLS certificate errors will be ignored for this session
+1627058192305	Marionette	INFO	Stopped listening on port 60581
+1627058201535	mozrunner::runner	INFO	Running command: "C:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe" "-marionette" "--headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\SC\\AppData\\Local\\Temp\\rust_mozprofileHhEcCR"
+*** You are running in headless mode.
+1627058202046	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\SC\\AppData\\Local\\Temp\\rust_mozprofileHhEcCR\\search.json.mozlz4", (void 0)))
+1627058203910	Marionette	INFO	Listening on port 60754
+1627058204240	Marionette	WARN	TLS certificate errors will be ignored for this session
+1627058208071	Marionette	INFO	Stopped listening on port 60754
+1627058350688	mozrunner::runner	INFO	Running command: "C:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe" "-marionette" "--headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\SC\\AppData\\Local\\Temp\\rust_mozprofileSKz7lx"
+*** You are running in headless mode.
+1627058351304	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\SC\\AppData\\Local\\Temp\\rust_mozprofileSKz7lx\\search.json.mozlz4", (void 0)))
+1627058353255	Marionette	INFO	Listening on port 64520
+1627058353371	Marionette	WARN	TLS certificate errors will be ignored for this session
+1627058356990	Marionette	INFO	Stopped listening on port 64520
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+1627058410339	mozrunner::runner	INFO	Running command: "C:\\\\Program Files\\\\Mozilla Firefox\\\\firefox.exe" "-marionette" "--headless" "--disable-gpu" "-foreground" "-no-remote" "-profile" "C:\\Users\\SC\\AppData\\Local\\Temp\\rust_mozprofileFTEv5U"
+*** You are running in headless mode.
+1627058410838	Marionette	INFO	Marionette enabled
+[GFX1-]: RenderCompositorSWGL failed mapping default framebuffer, no dt
+JavaScript error: resource://gre/modules/XULStore.jsm, line 66: Error: Can't find profile directory.
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\SC\\AppData\\Local\\Temp\\rust_mozprofileFTEv5U\\search.json.mozlz4", (void 0)))
+1627058412784	Marionette	INFO	Listening on port 61922
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x39009A,name=PContent::Msg_InitBackground) Channel closing: too late to send/recv, messages will be lost
+
+1627058413039	Marionette	WARN	TLS certificate errors will be ignored for this session
+1627058416670	Marionette	INFO	Stopped listening on port 61922
+
+###!!! [Child][MessageChannel] Error: (msgtype=0x590008,name=PHttpChannel::Msg_DeletingChannel) Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
