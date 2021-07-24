@@ -11,6 +11,9 @@ Information collector:
 https://stackoverflow.com/questions/45043617/count-the-number-of-objects-of-different-colors-in-an-image-in-python/45080346
 
 Unity 3D
+Object cloning
+https://docs.unity3d.com/ScriptReference/Object.Instantiate.html
+
 Embedding unity project into android
 https://medium.com/xrpractices/embedding-unity-app-inside-native-android-application-c7b82245f8af
 
@@ -26,3 +29,12 @@ https://www.salusgames.com/2017/01/08/circle-loading-animation-in-unity3d/
 Camera movement
 https://kylewbanks.com/blog/unity3d-panning-and-pinch-to-zoom-camera-with-touch-and-mouse-input
 https://gist.github.com/JISyed/5017805
+https://forum.unity.com/threads/mobile-touch-to-orbit-pan-and-zoom-camera-without-fix-target-in-one-script.522607/
+https://pressstart.vip/tutorials/2018/07/12/44/pan--zoom.html
+
+Vuforia
+AR
+https://www.youtube.com/watch?v=Fgd21lbhikU
+
+Vuforia-android integration
+https://everisus.medium.com/how-to-integrate-augmented-reality-into-native-android-apps-84020d687ad0
