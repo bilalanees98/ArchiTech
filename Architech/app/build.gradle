@@ -57,8 +57,12 @@ dependencies {
     api 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
 
     implementation 'com.zolad:zoominimageview:1.0.0'
+    implementation project(":Unity-library")
+    implementation project(":VuforiaWrapper")
 
-    implementation project(":MeshTutorial-debug")
+    //implementation fileTree(dir: 'libs', include: ['*.jar'])
+
+    //implementation project(":MeshTutorial-debug")
 
 
 }

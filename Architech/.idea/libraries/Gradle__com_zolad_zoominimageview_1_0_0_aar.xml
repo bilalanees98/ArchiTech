@@ -1,12 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: com.zolad:zoominimageview:1.0.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fb04d784f6a113fddf8b6deec05caff1/jetified-zoominimageview-1.0.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fb04d784f6a113fddf8b6deec05caff1/jetified-zoominimageview-1.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/fb04d784f6a113fddf8b6deec05caff1/jetified-zoominimageview-1.0.0/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8da54379555a6b6ab0971575826c7358/jetified-zoominimageview-1.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8da54379555a6b6ab0971575826c7358/jetified-zoominimageview-1.0.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/8da54379555a6b6ab0971575826c7358/jetified-zoominimageview-1.0.0/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6d1de8c6a2a80f246536f2abae7ff761/jetified-zoominimageview-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6d1de8c6a2a80f246536f2abae7ff761/jetified-zoominimageview-1.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/6d1de8c6a2a80f246536f2abae7ff761/jetified-zoominimageview-1.0.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bc18bef9d789effe0b5588b255f658dc/jetified-zoominimageview-1.0.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bc18bef9d789effe0b5588b255f658dc/jetified-zoominimageview-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/bc18bef9d789effe0b5588b255f658dc/jetified-zoominimageview-1.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.zolad/zoominimageview/1.0.0/77c45927ce58131fdabb855d1a1662374e633e5/zoominimageview-1.0.0-javadoc.jar!/" />

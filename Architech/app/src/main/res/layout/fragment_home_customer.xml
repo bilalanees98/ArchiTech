@@ -109,7 +109,7 @@
         <RelativeLayout
             android:id="@+id/generateModelTile"
             android:layout_width="0dp"
-            android:layout_height="230dp"
+            android:layout_height="200dp"
             android:layout_weight="3"
             android:background="@drawable/home_tile_bg"
             android:backgroundTint="@color/colorPrimaryDark"

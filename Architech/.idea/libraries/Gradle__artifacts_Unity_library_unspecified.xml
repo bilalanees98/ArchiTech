@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: artifacts:Unity-library:unspecified">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Unity-library/build/.transforms/49d2e08cd8db9a123e183df7f02fda78/jetified-MeshTutorial-debug/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/Unity-library/build/.transforms/49d2e08cd8db9a123e183df7f02fda78/jetified-MeshTutorial-debug/res" />
+      <root url="file://$PROJECT_DIR$/Unity-library/build/.transforms/49d2e08cd8db9a123e183df7f02fda78/jetified-MeshTutorial-debug/AndroidManifest.xml" />
+      <root url="jar://$PROJECT_DIR$/Unity-library/build/.transforms/49d2e08cd8db9a123e183df7f02fda78/jetified-MeshTutorial-debug/jars/libs/unity-classes.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

@@ -3,7 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/ArchiTech.iml" filepath="$PROJECT_DIR$/.idea/modules/ArchiTech.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MeshTutorial-debug/ArchiTech.MeshTutorial-debug.iml" filepath="$PROJECT_DIR$/.idea/modules/MeshTutorial-debug/ArchiTech.MeshTutorial-debug.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Unity-library/ArchiTech.Unity-library.iml" filepath="$PROJECT_DIR$/.idea/modules/Unity-library/ArchiTech.Unity-library.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/VuforiaWrapper/ArchiTech.VuforiaWrapper.iml" filepath="$PROJECT_DIR$/.idea/modules/VuforiaWrapper/ArchiTech.VuforiaWrapper.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/ArchiTech.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/ArchiTech.app.iml" />
     </modules>
   </component>

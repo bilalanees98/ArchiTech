@@ -113,7 +113,7 @@
 
         android:text="Modern Design"
         android:fontFamily="@font/roboto_medium"
-        android:textSize="32sp"
+        android:textSize="24sp"
         android:textColor="#000"
         android:layout_below="@+id/imageViewFloorPlanDetail"
         android:layout_marginTop="5dp"
@@ -160,10 +160,10 @@
 
         android:text="by M Bilal"
         android:fontFamily="@font/roboto_light"
-        android:textSize="24sp"
+        android:textSize="16sp"
         android:textColor="#000"
-        android:layout_below="@+id/imageViewFloorPlanDetail"
-        android:layout_marginTop="45dp"
+        android:layout_below="@+id/titleFloorPlanDetail"
+        android:layout_marginTop="2dp"
         android:layout_marginHorizontal="20dp"
         android:layout_alignParentLeft="true"/>
 
@@ -175,7 +175,7 @@
         android:layout_below="@+id/nameOfOwnerFloorPlanDetail"
 
         android:layout_marginHorizontal="20dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="5dp"
         android:collapseColumns="2"
         > <!-- collapse the first column of the table row-->
 
